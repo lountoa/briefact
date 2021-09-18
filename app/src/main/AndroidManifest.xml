@@ -10,8 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Briefact">
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".registation.RegistrationActivity"
+            android:exported="true" />
+        <activity
+            android:name=".splash.ui.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,5 +23,8 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

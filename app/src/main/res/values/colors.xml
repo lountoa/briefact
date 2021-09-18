@@ -1,10 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="WhiteSmoke">#F5F5F5</color>
+
+
+
+    <color name="colorPrimary">#165c73</color>
+    <color name="colorPrimaryDark">#165c73</color>
+    <color name="colorAccent">#165c73</color>
+
+    <color name="colorInactive">#AAAAAA</color>
+    <color name="colorBackTitle">#EBEBEB</color>
+    <color name="banner1">#165c73</color>
+    <color name="banner2">#F0FF00</color>
+
+    <color name="colorBackground">#F9F9F9</color>
+
+    <color name="vehicleColorBackground">#FCFCFC</color>
+
+    <color name="textColor">#4F4F4F</color>
+
+    <color name="colorAlpha">#9A9A9A</color>
+
+    <color name="colorNumberVehicle">#DCDCDC</color>
+
+    <color name="colorViewLine">#F2F2F2</color>
+
+    <color name="colorRipple">#42FFFFFF</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhite2">#b2cfd9</color>
+    <color name="colorWhite3">#D7E6EB</color>
+    <color name="colorWhite40">#66FFFFFF</color>
+    <color name="colorWhite20">#33FFFFFF</color>
+    <color name="colorDarkYellow">#FFE600</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlueMain">#75858A</color>
+    <color name="colorMain">#383F41</color>
+    <color name="colorGreen">#165C73</color>
+    <color name="colorGreenDark">#165367</color>
+    <color name="colorCardBackground">#FCFCFC</color>
+    <color name="colorToolbarBackground">#F3F5F6</color>
+    <color name="colorLicencePlateBorder">#0C1033</color>
+    <color name="colorGrayBlueLight">#D7E6EB</color>
+    <color name="colorGrayBackground">#D6DADB</color>
+    <color name="colorCountryCodeNotChosen">#ECEFF0</color>
+    <color name="colorCountryCodeChosen">#66FFFFFF</color>
+    <color name="colorDarkGrey">#706868</color>
+    <color name="colorLightGrey">#00FFFFFF</color>
+    <color name="colorDarkGreen">#08475B</color>
+
+    <color name="colorStatusBar">#668792</color>
+
+    <color name="colorText1">#383F41</color>
+    <color name="colorCorners">#0C1033</color>
+    <color name="colorBackground2">#F3F5F6</color>
+    <color name="colorTextIcons">#165C73</color>
+    <color name="colorText2">#08475B</color>
+    <color name="colorText3">#383F41</color>
+    <color name="colorText4">#75858A</color>
+    <color name="colorTextCard">#75858A</color>
+    <color name="colorBlueForButtons">#ff207d94</color>
+    <color name="colorTransparent">#00ff0000</color>
+    <color name="colorLoader">#081C22</color>
+
+
+    <color name="colorCallButtonTextDefault">#F3F3EB</color>
+    <color name="colorCallButtonTextActive">#FFE600</color>
+    <color name="colorCallButtonIconDefault">#F3F3EB</color>
+    <color name="colorCallButtonIconActive">#FFE600</color>
+    <color name="colorCallButtonBackgroundActive">#08475B</color>
+    <color name="colorCallButtonBackgroundDefault">#165C73</color>
+    <color name="colorCallButtonShadowStartColor">#3C093645</color>
+    <color name="colorCallButtonShadowEndColor">#462D88A6</color>
+
+    <color name="red">#FF0000</color>
+    <color name="yellow">#FFFF00</color>
+
+    <color name="colorCallButtonBackgroundDark">#08475B</color>
+
+    <color name="colorPrimaryLight">#64b5f6</color>
+    <color name="colorTextPrimary">@android:color/white</color>
+    <color name="colorScreenBackground">#fff3e0</color>
+    <color name="colorTextHint">#E0E0E0</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="purple_700">#3700B3</color>
+    <color name="teal_700">#00796B</color>
+    <color name="teal_200">#03DAC5</color>
+    <color name="white">#FFFFFF</color>
+
 </resources>

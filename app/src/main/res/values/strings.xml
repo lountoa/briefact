@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">briefact</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+
+    <!-- on boarding -->
+    <string name="welcome">Welcome to your own <b>briefact!</b></string>
+    <string name="welcome2">This app was created for people/students/teachers who want to give and learn <b>brief</b>, <b>interesting</b> and <b>quick</b> information!</string>
+    <string name="welcome3">How can I know so many things in the world, but not know the <b>name</b> and <b>e-mail</b> of such a nice person like you?</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
