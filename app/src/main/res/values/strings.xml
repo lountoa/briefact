@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">briefact</string>
+
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="prompt_email">Email</string>
@@ -12,9 +13,19 @@
 
 
     <!-- on boarding -->
-    <string name="welcome">Welcome to your own <b>briefact!</b></string>
-    <string name="welcome2">This app was created for people/students/teachers who want to give and learn <b>brief</b>, <b>interesting</b> and <b>quick</b> information!</string>
-    <string name="welcome3">How can I know so many things in the world, but not know the <b>name</b> and <b>e-mail</b> of such a nice person like you?</string>
+    <string name="welcome1">Welcome to your own <b>briefact!</b></string>
+    <string name="welcome12">This app was created for people, students, teachers who want to give and learn <b>brief</b>, <b>interesting</b> and <b>quick</b> information!</string>
+    <string name="welcome21">How can I know so many things in the world, but not know the <b>name</b> and <b>e-mail</b> of such a nice person like you?</string>
+    <string name="welcome22">Your pretty name, please:</string>
+    <string name="welcome23">Also your incredible email:</string>
+    <string name="welcome31">And the final step incoming before your first own, cool and unique note!</string>
+    <string name="welcome32">Come up with a password that will not even be hacked(it will be useful for app backup)</string>
+    <string name="welcome33">Smartest password ever:</string>
+    <string name="welcome34">Again(maybe you already forgot it)</string>
 
+
+
+    <string name="next">Next</string>
+    <string name="finish">Finish</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

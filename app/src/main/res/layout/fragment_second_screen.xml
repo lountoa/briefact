@@ -13,38 +13,45 @@
         app:lottie_loop="false"
         app:lottie_rawRes="@raw/second" />
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <TextView
+        android:id="@+id/title1"
         android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="150dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18sp"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/open_sans_llight"
+        android:gravity="left"
+        android:text="@string/welcome21"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/title2"
+    <EditText
+        android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/colorTransparent"
+        android:fontFamily="@font/open_sans_llight"
+        android:hint="@string/welcome22"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/description2"
-        android:layout_width="0dp"
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:gravity="center"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title2" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="48dp"
+        android:background="@color/colorTransparent"
+        android:fontFamily="@font/open_sans_llight"
+        android:hint="@string/welcome23"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/next2"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/next2"
@@ -52,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="40dp"
-        android:text="Next"
+        android:text="@string/next"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
