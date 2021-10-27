@@ -5,25 +5,40 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
+    <string name="sign_in">Sign in</string>
+    <string name="register">Create account</string>
+    <string name="new_here">New here?</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="login_failed">"Login failed due technical problems. Check your internet connection and try again later!"</string>
 
 
     <!-- on boarding -->
     <string name="welcome1">Welcome to your own <b>briefact!</b></string>
     <string name="welcome12">This app was created for people, students, teachers who want to give and learn <b>brief</b>, <b>interesting</b> and <b>quick</b> information!</string>
-    <string name="welcome21">How can I know so many things in the world, but not know the <b>name</b> and <b>e-mail</b> of such a nice person like you?</string>
-    <string name="welcome22">Your pretty name, please:</string>
-    <string name="welcome23">Also your incredible email:</string>
-    <string name="welcome31">And the final step incoming before your first own, cool and unique note!</string>
-    <string name="welcome32">Come up with a password that will not even be hacked(it will be useful for app backup)</string>
-    <string name="welcome33">Smartest password ever:</string>
-    <string name="welcome34">Again(maybe you already forgot it)</string>
+    <string name="welcome13">Well! Lets finally get acquainted! (to be honest, I have been waiting for this for a very looooooong time)</string>
+    <string name="welcome14">You have 2 ways to enter - sign in or create account(don\'t worry, this process will take a minute and will be needed once)</string>
+    <string name="login_text1">Hey there!</string>
+    <string name="login_text2">Since you came here, it means I once knew you, help me remember everything!</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_name">Name(Nickname)</string>
+    <string name="login_password_confirm">Confirm password</string>
+    <string name="register_hint1">1. name texts here</string>
+    <string name="register_hint2">2. also your email:</string>
+    <string name="register_hint3">3. your password</string>
+    <string name="register_hint4">4. again please(i might already forget it)</string>
+    <string name="register_text1">And the final step incoming before your first own, cool and unique note!</string>
+    <string name="register_text2">Come up with a password that will not even be hacked(it will be useful for app backup)</string>
 
 
+    <!-- registration -->
+    <string name="emailWarning">Email was not entered</string>
+    <string name="nameWarning">Name was not entered</string>
+    <string name="passwordWarning">Password mismatch!</string>
+    <string name="registerSuccess">Account was successfully created!</string>
+    <string name="registerFailed">Account was not created due some technical problems. Try again later!</string>
+    <string name="registerFailedPasOrEmail">All inputs required!</string>
 
     <string name="next">Next</string>
     <string name="finish">Finish</string>

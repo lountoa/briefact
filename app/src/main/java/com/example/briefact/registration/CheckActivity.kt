@@ -1,13 +1,15 @@
-package com.example.briefact.registation
+package com.example.briefact.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Window
 import com.example.briefact.R
 
-class RegistrationActivity : AppCompatActivity() {
+class CheckActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registration)
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_check)
         supportActionBar?.hide()
     }
 }

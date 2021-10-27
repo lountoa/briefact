@@ -1,4 +1,4 @@
-package com.example.briefact.registation.onboarding
+package com.example.briefact.registration.onboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

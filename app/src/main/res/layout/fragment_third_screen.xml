@@ -13,68 +13,84 @@
         app:lottie_loop="false"
         app:lottie_rawRes="@raw/third" />
 
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/title1"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="136dp"
         android:fontFamily="@font/open_sans_llight"
         android:gravity="left"
-        android:text="@string/welcome31"
+        android:text="@string/welcome13"
+
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title2"
-        android:layout_width="350dp"
+        android:layout_width="351dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans_llight"
-        android:text="@string/welcome32"
-
+        android:text="@string/welcome14"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/signin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title1" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title1"
+        app:layout_constraintVertical_bias="0.104" />
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signin"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:background="@color/colorTransparent"
-        android:fontFamily="@font/open_sans_llight"
-        android:hint="@string/welcome33"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/passwordEditText2"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/passwordEditText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="88dp"
-        android:background="@color/colorTransparent"
-        android:fontFamily="@font/open_sans_llight"
-        android:hint="@string/welcome34"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/finish"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginBottom="28dp"
+        android:text="@string/sign_in"
+        android:textColor="@color/white"
+        android:background="@color/banner1"
+        android:textAllCaps="false"
+        android:textSize="22sp"
+        android:fontFamily="@font/open_sans"
+        app:layout_constraintBottom_toTopOf="@+id/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:text="@string/finish"
-        android:textSize="22sp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/new_here"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/register"
+        app:layout_constraintTop_toBottomOf="@+id/signin"
+        app:layout_constraintVertical_bias="0.4" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/register"
+        android:textColor="@color/banner1"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.664"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
