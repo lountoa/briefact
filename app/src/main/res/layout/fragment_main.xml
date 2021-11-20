@@ -1,13 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment">
+    android:background="@color/background"
+    android:orientation="vertical">
 
-    <TextView
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_indicator"
+        style="@style/Widget.MaterialComponents.LinearProgressIndicator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="MAIN FRAGMENT" />
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorPrimary"
+        tools:progress="20"
+        tools:visibility="visible"
+        />
+    <!-- <com.google.android.material.progressindicator.ProgressIndicator
+         android:id="@+id/progress_indicator"
+         style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Determinate"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:max="100"
+         android:visibility="gone"
+         app:indicatorColor="@color/colorAccent"
+         tools:progress="20"
+         tools:visibility="visible" />-->
 
-</FrameLayout>
+    <FrameLayout
+        android:id="@+id/mainView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_to_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/source_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:contentDescription="@string/generic_image_description"
+                android:scaleType="fitCenter"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:backgroundTint="@color/colorAccent"
+            android:focusable="true"
+            app:srcCompat="@drawable/ic_baseline_more_horiz_24" />
+        <include layout="@layout/fab_layout" />
+
+    </FrameLayout>
+</LinearLayout>
