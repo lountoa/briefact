@@ -5,7 +5,7 @@
 
     <!--Move-->
     <translate
-        android:duration="1000"
+        android:duration="300"
         android:fromXDelta="150%"
         android:fromYDelta="150%"
         android:interpolator="@android:anim/linear_interpolator"
@@ -14,7 +14,7 @@
 
     <!--Fade In-->
     <alpha
-        android:duration="2000"
+        android:duration="500"
         android:fromAlpha="0.0"
         android:interpolator="@android:anim/decelerate_interpolator"
         android:toAlpha="1.0"></alpha>

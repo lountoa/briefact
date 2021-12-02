@@ -1,0 +1,100 @@
+<!--
+  ~ Copyright 2018 The app Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<PreferenceScreen
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="@string/tesseract_data">
+
+        <ListPreference
+            android:defaultValue="best"
+            android:entries="@array/ocr_training_data_entries"
+            android:entryValues="@array/key_ocr_training_data_entries_values"
+            android:key="@string/key_tess_training_data_source"
+            android:summary="@string/fbs"
+            android:title="@string/select_tesseract_data_type"
+            app:icon="@drawable/ic_baseline_fact_check_24" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="@string/key_enable_multiple_lang"
+            android:summary="@string/multiple_lang_summary"
+            android:title="@string/select_multi_languages_title"
+            app:icon="@drawable/ic_baseline_checklist_24"/>
+
+        <ListPreference
+            android:defaultValue="eng"
+            android:entries="@array/ocr_engine_language"
+            android:entryValues="@array/key_ocr_engine_language_value"
+            android:key="@string/key_language_for_tesseract"
+            android:summary="@string/language"
+            android:title="@string/tess_language_title"
+            app:icon="@drawable/ic_baseline_language_24_red" />
+
+        <MultiSelectListPreference
+
+            android:entries="@array/ocr_engine_language"
+            android:entryValues="@array/key_ocr_engine_language_value"
+            android:key="@string/key_language_for_tesseract_multi"
+            android:summary="@string/languages"
+            android:title="@string/select_multi_training_data_title"
+            app:icon="@drawable/ic_baseline_language_24" />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/advance_tesseract_settings"
+        app:isPreferenceVisible="false">
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/key_ocr_psm_mode"
+            android:entryValues="@array/value_ocr_psm_mode"
+            android:key="@string/key_ocr_psm_mode"
+            android:summary="@string/psm_summary"
+            android:title="@string/segmentation_mode"
+            app:icon="@drawable/ic_baseline_page_seg_32" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="@string/others_settings"
+        app:isPreferenceVisible="false">
+        <SwitchPreference
+            android:defaultValue="true"
+            android:icon="@drawable/ic_baseline_save_32"
+            android:key="@string/key_persist_data"
+            android:summary="@string/persist_data_summary"
+            android:title="@string/persist_data_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="About">
+
+        <Preference
+            android:icon="@drawable/ic_baseline_source_32"
+            android:summary="@string/open_source_statement"
+            android:title="@string/source_code">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Otiava" />
+        </Preference>
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

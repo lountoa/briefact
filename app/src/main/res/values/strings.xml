@@ -19,7 +19,7 @@
     <string name="welcome13">Well! Lets finally get acquainted! (to be honest, I have been waiting for this for a very looooooong time)</string>
     <string name="welcome14">You have 2 ways to enter - sign in or create account(don\'t worry, this process will take a minute and will be needed once)</string>
     <string name="login_text1">Hey there!</string>
-    <string name="login_text2">Since you came here, it means I once knew you, help me remember everything!</string>
+    <string name="login_text2"></string>
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
     <string name="login_name">Name(Nickname)</string>
@@ -56,7 +56,7 @@
     <string name="key_persist_data" translatable="false">persist_data</string>
     <string name="key_language_for_tesseract_multi" translatable="false">multi_languages</string>
     <string name="key_ocr_psm_mode">key_ocr_psm_mode</string>
-    <string name="fbs" translatable="false" >Fast/Best/Standard</string>
+    <string name="fbs" translatable="false" >Only Best(As for now)</string>
 
     <string name="key_contrast" translatable="false">process_contrast</string>
     <string name="key_un_sharp_masking" translatable="false">un_sharp_mask</string>
@@ -67,7 +67,7 @@
     <string name="language">Language</string>
     <string name="use_gray_scale_image_for_ocr">Pre-Process Image</string>
     <string name="gray_scale_detail">Pre-process image for enhanced accuracy</string>
-    <string name="tess_language_title">Select language for Tesseract</string>
+    <string name="tess_language_title">Select language</string>
     <string name="download_language_data_please_wait">Downloading OCR data files. Please wait …</string>
     <string name="installing_please_wait">Installing OCR data files.  Please wait…</string>
     <string name="language_not_exists">Training data for language %s  does not exist; cannot do recognition</string>
@@ -88,16 +88,16 @@
     <string name="persist_data_summary">Save image and text after the app closes</string>
     <string name="persist_data_title">Save data</string>
     <string name="percentage_downloaded">% of total:</string>
-    <string name="you_are_not_connected_to_internet">You are not connected to internet</string>
+    <string name="internet_issues">Something goes wrong. Check your connection.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="training_data_missing">Training data missing!</string>
     <string name="download_description">For proper functioning of Tesseract OCR additional training data needs to be downloaded to your device.\nDo you want to download selected language(%s) data?</string>
     <string name="refresh">Refresh</string>
-    <string name="tesseract_data">Tesseract Data</string>
+    <string name="tesseract_data">Tesseract Settings</string>
     <string name="select_tesseract_data_type">Select Tesseract Data type</string>
     <string name="others_settings">Other Settings</string>
-    <string name="open_source_statement">Android OCR is libre software. Click to visit app on GitHub.</string>
+    <string name="open_source_statement">Here you can visit my profile on GitHub.</string>
     <string name="source_code">Source code</string>
     <string name="generic_image_description">Image</string>
 
@@ -114,7 +114,7 @@
     <string name="advance_setting_summary">Functions related to image processing</string>
     <string name="image_enhancement">Image Enhancement</string>
     <string name="languages">Languages</string>
-    <string name="select_multi_training_data_title">Select Multiple languages for Tesseract</string>
+    <string name="select_multi_training_data_title">Select Multiple languages</string>
     <string name="multiple_lang_summary">Training data in multiple languages</string>
     <string name="select_multi_languages_title">Select Multiple languages</string>
     <string name="image_processing_functions">Image processing functions</string>

@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.briefact.MainActivity
+import com.example.briefact.MainActivityJ
 import com.example.briefact.R
 import com.example.briefact.signInOrRegister.LoginActivity
 

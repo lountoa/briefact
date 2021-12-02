@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.Window
-import com.example.briefact.MainActivity
+import com.example.briefact.MainActivityJ
 import com.example.briefact.MainFragment
 import com.example.briefact.R
 import com.example.briefact.registration.CheckActivity
@@ -31,7 +31,7 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             if (currentUser != null) {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, MainActivityJ::class.java)
                 startActivity(intent)
             } else {
                 val intent = Intent(this, CheckActivity::class.java)

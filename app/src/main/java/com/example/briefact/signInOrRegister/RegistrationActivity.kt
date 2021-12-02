@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.widget.Toast
-import com.example.briefact.MainActivity
+import com.example.briefact.MainActivityJ
 import com.example.briefact.MainFragment
 import com.example.briefact.R
 import com.google.firebase.auth.FirebaseAuth
@@ -50,7 +50,7 @@ class RegistrationActivity : AppCompatActivity() {
 
     private fun checkResult(isSuccess: Boolean) {
         if (isSuccess) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MainActivityJ::class.java))
             finish()
         } else {
             Toast.makeText(this, R.string.login_failed, Toast.LENGTH_LONG).show()

@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.widget.Toast
-import com.example.briefact.MainActivity
-import com.example.briefact.MainFragment
+import com.example.briefact.MainActivityJ
 import com.example.briefact.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -44,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkResult(isSuccess: Boolean) {
         if (isSuccess) {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivityJ::class.java)
             startActivity(intent)
             finish()
         } else {

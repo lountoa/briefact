@@ -1,0 +1,56 @@
+<resources>
+    <!--language array-->
+    <string-array name="ocr_engine_language">
+        <item>English</item>
+        <item>Russian</item>
+    </string-array>
+
+    <!--language keys mapped to tessertact training data -->
+    <string-array name="key_ocr_engine_language_value">
+        <item>eng</item>
+        <item>rus</item>
+    </string-array>
+
+    <string-array name="ocr_training_data_entries">
+        <item>Best</item>
+    </string-array>
+
+    <string-array name="key_ocr_training_data_entries_values">
+        <item>best</item>
+    </string-array>
+
+    <string-array name="key_ocr_psm_mode">
+        <item>PSM_OSD_ONLY</item>
+        <item>PSM_AUTO_OSD</item>
+        <item>PSM_AUTO_ONLY</item>
+        <item>PSM_AUTO</item>
+        <item>PSM_SINGLE_COLUMN</item>
+        <item>PSM_SINGLE_BLOCK_VERT_TEXT</item>
+        <item>PSM_SINGLE_BLOCK</item>
+        <item>PSM_SINGLE_LINE</item>
+        <item>PSM_SINGLE_WORD</item>
+        <item>PSM_CIRCLE_WORD</item>
+        <item>PSM_SINGLE_CHAR</item>
+        <item>PSM_SPARSE_TEXT</item>
+        <item>PSM_SPARSE_TEXT_OSD</item>
+        <item>PSM_RAW_LINE</item>
+    </string-array>
+
+    <string-array name="value_ocr_psm_mode">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+    </string-array>
+
+</resources>
