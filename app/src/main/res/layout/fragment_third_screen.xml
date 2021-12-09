@@ -3,94 +3,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_second_screen"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView01"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="false"
-        app:lottie_rawRes="@raw/third" />
-
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title1"
-        android:layout_width="300dp"
+        android:layout_width="346dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:fontFamily="@font/open_sans_llight"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/montserrat_regular"
         android:gravity="left"
         android:text="@string/welcome13"
-
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/title2"
-        android:layout_width="351dp"
+    <ImageView
+        android:id="@+id/string"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/open_sans_llight"
+        android:src="@drawable/ic_string"
+        app:layout_constraintEnd_toEndOf="@+id/title1"
+        app:layout_constraintStart_toStartOf="@+id/title1"
+        app:layout_constraintTop_toBottomOf="@+id/title1" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="346dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
         android:text="@string/welcome14"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/signin"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title1"
-        app:layout_constraintVertical_bias="0.104" />
+        app:layout_constraintTop_toBottomOf="@+id/string" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signin"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:background="@drawable/background_sing_in_button"
+        android:fontFamily="@font/montserrat_regular"
         android:text="@string/sign_in"
-        android:textColor="@color/white"
-        android:background="@color/banner1"
         android:textAllCaps="false"
-        android:textSize="22sp"
-        android:fontFamily="@font/open_sans"
-        app:layout_constraintBottom_toTopOf="@+id/register"
+        android:textColor="@color/mainColor2"
+        android:textSize="34sp"
+        android:layout_marginBottom="8dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/montserrat_medium"
         android:text="@string/new_here"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="128dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/register"
-        app:layout_constraintTop_toBottomOf="@+id/signin"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:fontFamily="@font/roboto_bold"
+        android:fontFamily="@font/montserrat_regular"
         android:text="@string/register"
-        android:textColor="@color/banner1"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:layout_marginStart="8dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.664"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

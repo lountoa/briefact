@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.briefact.R
 import com.example.briefact.registration.onboarding.screens.FirstScreen
-import com.example.briefact.registration.onboarding.screens.SecondScreen
 import com.example.briefact.registration.onboarding.screens.ThirdScreen
 import kotlinx.android.synthetic.main.fragment_view_pager.view.*
 
@@ -24,7 +23,6 @@ class ViewPagerFragment : Fragment() {
 
         val fragmentList = arrayListOf<Fragment>(
             FirstScreen(),
-            SecondScreen(),
             ThirdScreen()
         )
 

@@ -1,0 +1,125 @@
+<resources>
+    <string name="app_name">briefact</string>
+
+    <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Пароль</string>
+    <string name="sign_in">Войти</string>
+    <string name="register">Создать аккаунт</string>
+    <string name="new_here">Новый пользователь?</string>
+    <string name="invalid_username">Не подходящее имя</string>
+    <string name="invalid_password">Пароль должен содержать больше 5 символов</string>
+    <string name="your_skan">Готовый текст:</string>
+    <string name="will_be_here">*появится тут*</string>
+    <string name="login_failed">Вход не был выполнен по техническим причинам, проверьте подключение к интернету!</string>
+
+
+    <!-- on boarding -->
+    <string name="welcome1">Добро пожаловать в briefact!</string>
+    <string name="welcome12">Это приложение было разработано для студентов, преподавателей, которые хотят предоставлять и делиться полезной, краткой и интересной информацией!</string>
+    <string name="welcome13">Чтож! Давай знакомиться!</string>
+    <string name="welcome14">Есть 2 пути, чтобы начать вести супер классные конспекты: <b>войти</b> в уже существующий аккаунт или <b>зарегестрировать</b> новый(это займет пару мгновений).</string>
+    <string name="login_text1">Привет!</string>
+    <string name="login_text11">Если вы зашли сюда, значит мы уже были знакомы.\nС возвращением!</string>
+    <string name="login_text2">Ваши данные:</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Пароль</string>
+    <string name="login_name">Имя(псевдоним)</string>
+    <string name="login_password_confirm">Еще разок</string>
+    <string name="register_hint1">1. name texts here</string>
+    <string name="register_hint2">2. also your email:</string>
+    <string name="register_hint3">3. your password</string>
+    <string name="register_hint4">4. again please(i might already forget it)</string>
+    <string name="register_text1"><b>Последний шаг до создания уникальных конспектов!</b>\nПридумайте какой-нибудь классный пароль, чтобы его никто не смог взломать(эти данные понадобятся для восстановления аккаунта) :)</string>
+
+
+    <!-- registration -->
+    <string name="emailWarning">Email не был введен</string>
+    <string name="nameWarning">Имя было не введено</string>
+    <string name="passwordWarning">Несовпадение паролей!</string>
+    <string name="registerSuccess">Супер! Аккаунт создан!</string>
+    <string name="registerFailed">Аккаунт не был создан по техническим причинам. Проверьте соединение с интернетом!</string>
+    <string name="registerFailedPasOrEmail">Не все данные введены!</string>
+
+    <string name="next">Далее</string>
+    <string name="finish">Готово</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!--OCR USE-->
+    <!-- various key to store the setting values -->
+    <string name="key_language_for_tesseract" translatable="false">language_for_tesseract</string>
+    <string name="key_tess_training_data_source" translatable="false">tess_training_data_source</string>
+    <string name="key_grayscale_image_ocr" translatable="false">grayscale_image_ocr</string>
+    <string name="key_last_use_image_location" translatable="false">last_use_image_location</string>
+    <string name="key_last_use_image_text" translatable="false">last_use_image_text</string>
+    <string name="key_draw_box" translatable="false">key_draw_box</string>
+    <string name="key_persist_data" translatable="false">persist_data</string>
+    <string name="key_language_for_tesseract_multi" translatable="false">multi_languages</string>
+    <string name="key_ocr_psm_mode">key_ocr_psm_mode</string>
+    <string name="fbs" translatable="false" >Только "Лучшее"(на данный момент)</string>
+
+    <string name="key_contrast" translatable="false">process_contrast</string>
+    <string name="key_un_sharp_masking" translatable="false">un_sharp_mask</string>
+    <string name="key_otsu_threshold" translatable="false">otsu_threshold</string>
+    <string name="key_find_skew_and_deskew" translatable="false">deskew_img</string>
+    <string name="key_enable_multiple_lang" translatable="false">key_enable_multiple_lang</string>
+
+    <string name="language">Язык</string>
+    <string name="use_gray_scale_image_for_ocr">Pre-Process Image</string>
+    <string name="gray_scale_detail">Pre-process image for enhanced accuracy</string>
+    <string name="tess_language_title">Выбрать язык</string>
+    <string name="download_language_data_please_wait">Скачивание данных для OCR. Пожалуйста подождите…</string>
+    <string name="installing_please_wait">Установка важных файлов OCR. Пожалуйста подождите…</string>
+    <string name="language_not_exists">Данные оффлайн режима для языка (%s) не найдены. Проверьте соединение с интернетом…</string>
+    <string name="settings">Настройки</string>
+    <string name="segmentation_mode">Page segmentation mode</string>
+
+    <string name="draw_box_summary">App will draw text on image</string>
+    <string name="draw_box_title">Draw text on image</string>
+    <string name="no_results">Текст не распознан или не был найден</string>
+    <string name="converting_image">Перевод изображения в текст, секундочку…</string>
+    <string name="downloading">Скачивание…</string>
+    <string name="downloading_language">Скачивание языка…</string>
+    <string name="show_last_result">Последний результат</string>
+    <string name="text_goes_here">Текст будет тут</string>
+    <string name="copied_to_clipboard">Скопировано</string>
+    <string name="copy_to_clipboard">Скопировать</string>
+    <string name="share">Поделиться</string>
+    <string name="persist_data_summary">Сохранять последний перевод после закрытия приложения?</string>
+    <string name="persist_data_title">Сохранить данные</string>
+    <string name="percentage_downloaded">% загружено:</string>
+    <string name="internet_issues">Что-то пошло не так. Проверьте соединение.</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="training_data_missing">Не найдены важные данные для оффлайн режима!</string>
+    <string name="download_description">Для корректной работы приложения необходимо скачать файлы распознавания текста(не волнуйтесь, никаких вирусов)\nВы хотите установить данные языка (%s)?</string>
+    <string name="refresh">Перезагрузить</string>
+    <string name="tesseract_data">Настройки Tesseract</string>
+    <string name="select_tesseract_data_type">Скорость распознавания</string>
+    <string name="others_settings">Другие настройки</string>
+    <string name="open_source_statement">Тут вы можете посетить мой профиль на GitHub.</string>
+    <string name="source_code">Исходный код</string>
+    <string name="generic_image_description">Изображение</string>
+
+    <string name="contrast_summary">Adaptively attempts to expand the contrast to the full dynamic range</string>
+    <string name="un_sharp_masking_summary">Performs unsharp masking (edge enhancement) of image</string>
+
+    <string name="otsu_summary">Performs locally-adaptive Otsu threshold binarization of image</string>
+    <string name="deskew_summary">Find the Skew and Deskew the Image</string>
+    <string name="perform_contrast">Enhance Contrast</string>
+    <string name="un_sharp_masking">Un-Sharp Masking</string>
+    <string name="otsu_threshold">OTSU Threshold</string>
+    <string name="deskew_image">Deskew Image</string>
+    <string name="advance_settings">Advanced Settings</string>
+    <string name="advance_setting_summary">Functions related to image processing</string>
+    <string name="image_enhancement">Image Enhancement</string>
+    <string name="languages">Языки</string>
+    <string name="select_multi_training_data_title">Выбрать несколько языков</string>
+    <string name="multiple_lang_summary">Данные для распознавания нескольких яыков</string>
+    <string name="select_multi_languages_title">Выбрать несколько языков</string>
+    <string name="image_processing_functions">Image processing functions</string>
+    <string name="advance_tesseract_settings">Advance Tesseract Settings</string>
+    <string name="psm_summary">It directs how Tesseract splits image in lines of text and words.</string>
+</resources>

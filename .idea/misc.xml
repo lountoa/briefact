@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.24635416666666668" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/background_corner_5.xml" value="0.2111111111111111" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/background_on_button_click.xml" value="0.283984375" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_baseline_add_photo_alternate_24.xml" value="0.15092592592592594" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_baseline_add_photo_alternate__white.xml" value="0.15092592592592594" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_baseline_alternate_email_24.xml" value="0.19490740740740742" />
@@ -15,28 +16,34 @@
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_baseline_language_24.xml" value="0.19490740740740742" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_baseline_language_32.xml" value="0.19490740740740742" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.15092592592592594" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_launcher_background.xml" value="0.30092592592592593" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.30092592592592593" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_stick.xml" value="0.23489583333333333" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/ic_sticl.xml" value="0.23489583333333333" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/drawable/logo.xml" value="0.30092592592592593" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/font/open_sans_bold.xml" value="0.24895833333333334" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/font/open_sans_light.xml" value="0.24895833333333334" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout-w1240dp/fragment_first_screen.xml" value="0.24866131191432397" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout-w1240dp/fragment_view_pager.xml" value="0.24866131191432397" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_check.xml" value="0.25" />
-        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_registration.xml" value="0.25" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_registration.xml" value="0.18" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_registration2.xml" value="0.3729166666666667" />
-        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_splash.xml" value="0.38697916666666665" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout/background_corner_5.xml" value="0.13030713640469738" />
-        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/bottom_sheet_dialog_results.xml" value="0.32222222222222224" />
-        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fab_layout.xml" value="0.5" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/bottom_sheet_dialog_results.xml" value="0.22" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fab_layout.xml" value="0.18" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_check.xml" value="0.2" />
-        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_first_screen.xml" value="0.25" />
-        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_main.xml" value="0.25" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_first_screen.xml" value="0.2" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_main.xml" value="0.2" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_registration.xml" value="0.2046875" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_second_screen.xml" value="0.25" />
-        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_third_screen.xml" value="0.33" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_third_screen.xml" value="0.2" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/layout/fragment_view_pager.xml" value="0.32222222222222224" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/layout/settings_activity.xml" value="0.32222222222222224" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.30092592592592593" />
+        <entry key="..\:/School/projectForSchool/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3319634703196347" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/xml/advance_preference.xml" value="0.5" />
         <entry key="..\:/School/projectForSchool/app/src/main/res/xml/root_preferences.xml" value="0.32222222222222224" />
       </map>

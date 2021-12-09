@@ -59,6 +59,7 @@ import com.example.briefact.utils.Utils;
 public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.ProgressNotifier {
 
     private static final String TAG = "MainActivity";
+    private static long back_pressed;
 
     private static final int REQUEST_CODE_SETTINGS = 797;
     private static final int REQUEST_CODE_SELECT_IMAGE = 172;
@@ -319,7 +320,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
                             if (!isLanguageDataExists(dataType, lang)) {
-                                //  show dialog to change language
+                                startActivityForResult(new Intent(MainActivityJ.this, SettingsActivity.class), REQUEST_CODE_SETTINGS);
                             }
 
                         }
@@ -684,6 +685,16 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         fab3.setLayoutParams(layoutParams3);
         fab3.startAnimation(hide_fab_3);
         fab3.setClickable(false);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (back_pressed + 2000 > System.currentTimeMillis())
+            super.onBackPressed();
+        else
+            Toast.makeText(getBaseContext(), "Press once again to exit!",
+                    Toast.LENGTH_SHORT).show();
+        back_pressed = System.currentTimeMillis();
     }
 
 }

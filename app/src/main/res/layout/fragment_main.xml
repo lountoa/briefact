@@ -4,35 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@color/mainColor5"
     android:orientation="vertical">
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress_indicator"
         style="@style/Widget.MaterialComponents.LinearProgressIndicator"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:max="100"
         android:visibility="gone"
-        app:indicatorColor="@color/colorPrimary"
+        app:indicatorColor="@color/white"
         tools:progress="20"
-        tools:visibility="visible"
-        />
-    <!-- <com.google.android.material.progressindicator.ProgressIndicator
-         android:id="@+id/progress_indicator"
-         style="@style/Widget.MaterialComponents.ProgressIndicator.Linear.Determinate"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:max="100"
-         android:visibility="gone"
-         app:indicatorColor="@color/colorAccent"
-         tools:progress="20"
-         tools:visibility="visible" />-->
-
+        tools:visibility="visible"/>
     <FrameLayout
         android:id="@+id/mainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            android:layout_marginTop="12sp"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/your_skan"
+            android:textColor="@color/WhiteSmoke"
+            android:fontFamily="@font/montserrat_medium"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36sp"
+            android:layout_gravity="center"
+            android:text="@string/will_be_here"
+            android:textColor="@color/WhiteSmoke"
+            android:fontFamily="@font/montserrat_medium"/>
 
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -44,7 +52,6 @@
                 android:id="@+id/source_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:contentDescription="@string/generic_image_description"
                 android:scaleType="fitCenter"
                 tools:src="@tools:sample/backgrounds/scenic" />
@@ -56,12 +63,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
+            android:layout_margin="30dp"
             android:clickable="true"
-            android:backgroundTint="@color/colorAccent"
+            android:backgroundTint="@color/mainColor3"
             android:focusable="true"
-            app:srcCompat="@drawable/ic_baseline_more_horiz_24" />
+            app:srcCompat="@drawable/ic_baseline_add_24" />
         <include layout="@layout/fab_layout" />
-
     </FrameLayout>
 </LinearLayout>

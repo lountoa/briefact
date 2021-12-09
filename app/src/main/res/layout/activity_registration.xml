@@ -3,69 +3,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_registration"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
 
     <ScrollView
         android:id="@+id/myview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_registration"
         android:orientation="vertical" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/title1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/open_sans_llight"
-                android:gravity="left"
+                android:layout_marginTop="36sp"
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="@color/white"
                 android:text="@string/login_text1"
-                android:textSize="20sp"
+                android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/title2"
-                android:layout_width="300dp"
+            <ImageView
+                android:id="@+id/string"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/open_sans_llight"
-                android:gravity="left"
-                android:text="@string/register_text1"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/string2"
+                app:layout_constraintEnd_toEndOf="@+id/title2"
+                app:layout_constraintStart_toStartOf="@+id/title2"
                 app:layout_constraintTop_toBottomOf="@+id/title1" />
 
             <TextView
-                android:id="@+id/title3"
-                android:layout_width="300dp"
+                android:id="@+id/title2"
+                android:layout_width="322dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="112dp"
-                android:fontFamily="@font/open_sans_llight"
-                android:gravity="left"
-                android:text="@string/register_text2"
-                android:textSize="20sp"
+                android:fontFamily="@font/roboto_light"
+                android:layout_marginTop="16dp"
+                android:text="@string/register_text1"
+                android:textColor="@color/white"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title1" />
+                app:layout_constraintTop_toBottomOf="@+id/string"/>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="322dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_login_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title2">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="@string/login_text2"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                android:layout_marginTop="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout1"
-                android:layout_width="0dp"
+                android:layout_width="255dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                app:layout_constraintEnd_toEndOf="@+id/title3"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/title3"
-                app:layout_constraintTop_toBottomOf="@+id/title3">
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/registerName"
@@ -75,7 +92,7 @@
                     android:background="#0000"
                     android:drawableStart="@drawable/ic_baseline_person_24"
                     android:drawablePadding="12dp"
-                    android:fontFamily="@font/open_sans_llight"
+                    android:fontFamily="@font/montserrat_medium"
                     android:hint="@string/login_name"
                     android:inputType="textEmailAddress"
                     android:padding="24sp"
@@ -101,7 +118,7 @@
                     android:background="#0000"
                     android:drawableStart="@drawable/ic_baseline_alternate_email_24"
                     android:drawablePadding="12dp"
-                    android:fontFamily="@font/open_sans_llight"
+                    android:fontFamily="@font/montserrat_medium"
                     android:hint="@string/login_email"
                     android:padding="24sp"
                     app:layout_constraintEnd_toEndOf="@+id/title2"
@@ -130,7 +147,7 @@
                     android:background="#0000"
                     android:drawableStart="@drawable/ic_baseline_password_24"
                     android:drawablePadding="12dp"
-                    android:fontFamily="@font/open_sans_llight"
+                    android:fontFamily="@font/montserrat_medium"
                     android:hint="@string/login_password"
                     android:padding="24sp"
                     app:layout_constraintEnd_toEndOf="@+id/title2"
@@ -159,29 +176,32 @@
                     android:background="#0000"
                     android:drawableStart="@drawable/ic_baseline_lock_24"
                     android:drawablePadding="12dp"
-                    android:fontFamily="@font/open_sans_llight"
+                    android:textColorHint="@color/textColor"
+                    android:fontFamily="@font/montserrat_medium"
                     android:hint="@string/login_password_confirm"
                     android:padding="24sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/registerButton"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/banner1"
-                android:drawableStart="@drawable/ic_baseline_check_circle_24"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="18dp"
+                android:background="@drawable/background_on_button_click"
                 android:fontFamily="@font/open_sans"
                 android:padding="16sp"
-                android:layout_marginTop="12dp"
                 android:text="@string/register"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
                 app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

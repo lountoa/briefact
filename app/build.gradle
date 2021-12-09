@@ -14,7 +14,7 @@ android {
         minSdk 24
         targetSdk 30
         versionCode 1
-        versionName "1.01"
+        versionName "1.11"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resValue "string", "github_url", gitUrl
         multiDexEnabled true

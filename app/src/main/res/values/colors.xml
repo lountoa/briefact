@@ -3,6 +3,13 @@
     <color name="WhiteSmoke">#F5F5F5</color>
 
 
+    <color name="mainColor1">#3E2ECB</color>
+    <color name="mainColor2">#080428</color>
+    <color name="mainColor3">#1A1277</color>
+    <color name="mainColor4">#686CFA</color>
+    <color name="mainColor5">#756BF7</color>
+
+
 
     <color name="colorPrimary">#165c73</color>
     <color name="colorPrimaryDark">#165c73</color>
