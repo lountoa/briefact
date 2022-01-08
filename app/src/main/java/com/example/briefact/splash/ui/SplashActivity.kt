@@ -5,17 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.view.Window
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.FrameLayout
-import com.example.briefact.MainActivityJ
-import com.example.briefact.MainFragment
+import com.example.briefact.main.MainActivityJ
 import com.example.briefact.R
 import com.example.briefact.registration.CheckActivity
-import com.example.briefact.registration.CheckFragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {

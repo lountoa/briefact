@@ -1,4 +1,4 @@
-package com.example.briefact
+package com.example.briefact.main
 
 import android.app.Activity
 import android.app.PendingIntent.getActivity
@@ -8,7 +8,6 @@ import android.widget.FrameLayout
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import com.googlecode.tesseract.android.TessBaseAPI.ProgressNotifier
-import kotlinx.android.synthetic.main.fab_layout.*
 import kotlinx.android.synthetic.main.fragment_main.*
 
 import android.app.ProgressDialog

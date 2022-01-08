@@ -12,10 +12,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="your_skan">Your scan:</string>
     <string name="will_be_here">*will appear here*</string>
+    <string name="add">Finish</string>
+    <string name="bottom_sheet_dialog_hint_title">Title</string>
     <string name="login_failed">"Login failed due technical problems. Check your internet connection and try again later!"</string>
-
-
-    <!-- on boarding -->
     <string name="welcome1">Welcome to your own briefact!</string>
     <string name="welcome12">This app was created for business people, students, teachers who want to provide and learn brief, interesting and quick information!</string>
     <string name="welcome13">Well! Lets finally get acquainted! (to be honest, I have been waiting for this for a very looooooong time)</string>
@@ -32,6 +31,7 @@
     <string name="register_hint3">3. your password</string>
     <string name="register_hint4">4. again please(i might already forget it)</string>
     <string name="register_text1">And the final step before your first own, cool and unique note: come up with a password that will not be hacked(it will be used for app backup)</string>
+    <string name="loged_out">Logout successfully, re-enter application!</string>
 
 
     <!-- registration -->
@@ -41,14 +41,19 @@
     <string name="registerSuccess">Account was successfully created!</string>
     <string name="registerFailed">Account was not created due some technical problems. Try again later!</string>
     <string name="registerFailedPasOrEmail">All inputs required!</string>
-
     <string name="next">next</string>
     <string name="finish">Finish</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!--Notes-->
+    <string name="noTitle">Title required!</string>
+    <string name="noteCreated">Note created successfully!</string>
+    <string name="noteNotCreated">Failed to create note</string>
 
     <!--OCR USE-->
     <!-- various key to store the setting values -->
+    <string name="log_out" translatable="false">log_out</string>
+
     <string name="key_language_for_tesseract" translatable="false">language_for_tesseract</string>
     <string name="key_tess_training_data_source" translatable="false">tess_training_data_source</string>
     <string name="key_grayscale_image_ocr" translatable="false">grayscale_image_ocr</string>
@@ -59,6 +64,13 @@
     <string name="key_language_for_tesseract_multi" translatable="false">multi_languages</string>
     <string name="key_ocr_psm_mode">key_ocr_psm_mode</string>
     <string name="fbs" translatable="false" >Only Best(As for now)</string>
+    <string name="account_label" translatable="true" >Account info</string>
+    <string name="account_email_title" translatable="true" >Using account:</string>
+    <string name="account_email_content" translatable="true" >%1$d</string>
+    <string name="key_account_email_content" translatable="true" >%1$d</string>
+    <string name="account_name_title" translatable="true" >Username:</string>
+    <string name="account_name_content" translatable="true" >%1$s</string>
+    <string name="key_account_name_content" translatable="true" >%1$s</string>
 
     <string name="key_contrast" translatable="false">process_contrast</string>
     <string name="key_un_sharp_masking" translatable="false">un_sharp_mask</string>
@@ -102,6 +114,8 @@
     <string name="open_source_statement">Here you can visit my profile on GitHub.</string>
     <string name="source_code">Source code</string>
     <string name="generic_image_description">Image</string>
+    <string name="logout">Logout</string>
+    <string name="about">About</string>
 
     <string name="contrast_summary">Adaptively attempts to expand the contrast to the full dynamic range</string>
     <string name="un_sharp_masking_summary">Performs unsharp masking (edge enhancement) of image</string>

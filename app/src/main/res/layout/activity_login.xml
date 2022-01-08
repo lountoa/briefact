@@ -80,8 +80,10 @@
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
@@ -128,7 +130,6 @@
                 android:drawableStart="@drawable/ic_baseline_alternate_email_24"
                 android:drawablePadding="12dp"
                 android:layout_marginTop="16dp"
-                android:maxLines="1"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="@string/login_email"
                 android:textColorHint="#333333"

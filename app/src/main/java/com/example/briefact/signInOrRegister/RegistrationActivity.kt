@@ -3,10 +3,8 @@ package com.example.briefact.signInOrRegister
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
 import android.widget.Toast
-import com.example.briefact.MainActivityJ
-import com.example.briefact.MainFragment
+import com.example.briefact.main.MainActivityJ
 import com.example.briefact.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_registration.*

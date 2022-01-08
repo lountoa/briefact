@@ -9,7 +9,6 @@
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progress_indicator"
-        style="@style/Widget.MaterialComponents.LinearProgressIndicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="100"
@@ -17,30 +16,11 @@
         app:indicatorColor="@color/white"
         tools:progress="20"
         tools:visibility="visible"/>
+
     <FrameLayout
         android:id="@+id/mainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="36sp"
-            android:layout_marginTop="12sp"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/your_skan"
-            android:textColor="@color/WhiteSmoke"
-            android:fontFamily="@font/montserrat_medium"/>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="36sp"
-            android:layout_gravity="center"
-            android:text="@string/will_be_here"
-            android:textColor="@color/WhiteSmoke"
-            android:fontFamily="@font/montserrat_medium"/>
 
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -48,26 +28,59 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/noteList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
             <ImageView
                 android:id="@+id/source_image"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/generic_image_description"
                 android:scaleType="fitCenter"
                 tools:src="@tools:sample/backgrounds/scenic" />
-
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+        <ImageView
+            android:id="@+id/bottom_panel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="30dp"
-            android:clickable="true"
-            android:backgroundTint="@color/mainColor3"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/background_bottom"/>
+
+        <Button
+            android:id="@+id/fab_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:focusable="true"
-            app:srcCompat="@drawable/ic_baseline_add_24" />
-        <include layout="@layout/fab_layout" />
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/ic_add_huge"/>
+
+        <Button
+            android:id="@+id/fab_2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:focusable="true"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="bottom|end"
+            android:background="@drawable/ic_settings"/>
+
+        <Button
+            android:id="@+id/fab_3"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:focusable="true"
+            android:layout_marginStart="64dp"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="bottom|start"
+            android:background="@drawable/ic_recent"/>
+
     </FrameLayout>
 </LinearLayout>

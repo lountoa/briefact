@@ -33,7 +33,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.briefact.MainFragment"
+        android:name="com.example.briefact.main.MainFragment"
         android:label="@string/title_activity_main"
         tools:layout="@layout/fragment_main" />
 </navigation>

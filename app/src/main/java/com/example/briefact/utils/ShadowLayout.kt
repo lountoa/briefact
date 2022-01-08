@@ -1,10 +1,9 @@
-package com.example.briefact
+package com.example.briefact.utils
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
-import com.example.briefact.utils.DynamicCardShadowOutlineProvider
-import com.example.briefact.utils.dip
+import com.example.briefact.R
 
 class ShadowLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
                                              defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr) {

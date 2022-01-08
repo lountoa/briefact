@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background">
+    android:background="@color/white">
 
 
     <LinearLayout
@@ -31,26 +31,49 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/generic_image_description"
             app:srcCompat="@drawable/ic_baseline_share_24" />
+
+        <Button
+            android:id="@+id/resultant_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/montserrat_medium"
+            android:background="@drawable/background_on_button_click" />
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/resultant_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/action_bar"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="@string/bottom_sheet_dialog_hint_title"
+        android:textColor="@color/background"
+        android:textSize="24sp"
+        android:visibility="visible" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/action_bar"
+        android:layout_below="@id/resultant_title"
         android:fillViewport="true">
 
         <EditText
             android:id="@+id/resultant_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:gravity="top"
             android:paddingLeft="16dp"
             android:paddingTop="12dp"
             android:paddingRight="16dp"
             android:paddingBottom="12dp"
-            android:textColor="@android:color/white"
-            android:textIsSelectable="true"
+            android:textColor="@color/background"
+            android:textIsSelectable="false"
             android:textSize="16sp"
             tools:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." />
     </androidx.core.widget.NestedScrollView>
-
 </RelativeLayout>

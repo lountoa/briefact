@@ -12,14 +12,16 @@
     <string name="invalid_password">Пароль должен содержать больше 5 символов</string>
     <string name="your_skan">Готовый текст:</string>
     <string name="will_be_here">*появится тут*</string>
-    <string name="login_failed">Вход не был выполнен по техническим причинам, проверьте подключение к интернету!</string>
+    <string name="add">Добавить</string>
+    <string name="bottom_sheet_dialog_hint_title">Введите название</string>
+    <string name="login_failed">Вход не был выполнен, неверный логин или пароль. Проверьте подключение к интернету!</string>
 
 
     <!-- on boarding -->
     <string name="welcome1">Добро пожаловать в briefact!</string>
     <string name="welcome12">Это приложение было разработано для студентов, преподавателей, которые хотят предоставлять и делиться полезной, краткой и интересной информацией!</string>
-    <string name="welcome13">Чтож! Давай знакомиться!</string>
-    <string name="welcome14">Есть 2 пути, чтобы начать вести супер классные конспекты: <b>войти</b> в уже существующий аккаунт или <b>зарегестрировать</b> новый(это займет пару мгновений).</string>
+    <string name="welcome13">Ну что! Давай знакомиться!</string>
+    <string name="welcome14">Есть 2 пути, чтобы начать вести супер классные конспекты: <b>войти</b> в уже существующий аккаунт или <b>зарегистрировать</b> новый(это займет пару мгновений).</string>
     <string name="login_text1">Привет!</string>
     <string name="login_text11">Если вы зашли сюда, значит мы уже были знакомы.\nС возвращением!</string>
     <string name="login_text2">Ваши данные:</string>
@@ -32,7 +34,7 @@
     <string name="register_hint3">3. your password</string>
     <string name="register_hint4">4. again please(i might already forget it)</string>
     <string name="register_text1"><b>Последний шаг до создания уникальных конспектов!</b>\nПридумайте какой-нибудь классный пароль, чтобы его никто не смог взломать(эти данные понадобятся для восстановления аккаунта) :)</string>
-
+    <string name="loged_out">Вы вышли из аккаунта, перезайдите в приложение</string>
 
     <!-- registration -->
     <string name="emailWarning">Email не был введен</string>
@@ -41,6 +43,9 @@
     <string name="registerSuccess">Супер! Аккаунт создан!</string>
     <string name="registerFailed">Аккаунт не был создан по техническим причинам. Проверьте соединение с интернетом!</string>
     <string name="registerFailedPasOrEmail">Не все данные введены!</string>
+    <string name="noTitle">Вы не ввели название</string>
+    <string name="noteCreated">Успешно!</string>
+    <string name="noteNotCreated">Failed to create note</string>
 
     <string name="next">Далее</string>
     <string name="finish">Готово</string>
@@ -58,7 +63,14 @@
     <string name="key_persist_data" translatable="false">persist_data</string>
     <string name="key_language_for_tesseract_multi" translatable="false">multi_languages</string>
     <string name="key_ocr_psm_mode">key_ocr_psm_mode</string>
-    <string name="fbs" translatable="false" >Только "Лучшее"(на данный момент)</string>
+    <string name="fbs" translatable="false" >Только "Лучшее"(на данный момент). Для лучшего распознования используйте сканы или хорошо освещенные снимки.</string>
+    <string name="account_label" translatable="true" >Аккаунт</string>
+    <string name="account_email_title" translatable="true" >Используемый аккаунт:</string>
+    <string name="account_email_content" translatable="true" >%1$d</string>
+    <string name="key_account_email_content" translatable="true" >%1$d</string>
+    <string name="account_name_title" translatable="true" >Имя:</string>
+    <string name="account_name_content" translatable="true" >%1$d</string>
+    <string name="key_account_name_content" translatable="true" >%1$d</string>
 
     <string name="key_contrast" translatable="false">process_contrast</string>
     <string name="key_un_sharp_masking" translatable="false">un_sharp_mask</string>
@@ -102,6 +114,8 @@
     <string name="open_source_statement">Тут вы можете посетить мой профиль на GitHub.</string>
     <string name="source_code">Исходный код</string>
     <string name="generic_image_description">Изображение</string>
+    <string name="logout">Выйти из аккаунта</string>
+    <string name="about">О приложении</string>
 
     <string name="contrast_summary">Adaptively attempts to expand the contrast to the full dynamic range</string>
     <string name="un_sharp_masking_summary">Performs unsharp masking (edge enhancement) of image</string>
@@ -117,7 +131,7 @@
     <string name="image_enhancement">Image Enhancement</string>
     <string name="languages">Языки</string>
     <string name="select_multi_training_data_title">Выбрать несколько языков</string>
-    <string name="multiple_lang_summary">Данные для распознавания нескольких яыков</string>
+    <string name="multiple_lang_summary">Распознование текста с несколькими языками(низкая точность распознанного текста)</string>
     <string name="select_multi_languages_title">Выбрать несколько языков</string>
     <string name="image_processing_functions">Image processing functions</string>
     <string name="advance_tesseract_settings">Advance Tesseract Settings</string>

@@ -1,4 +1,4 @@
-package com.example.briefact;
+package com.example.briefact.main;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -16,12 +16,9 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Html;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,11 +26,17 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.briefact.R;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -49,6 +52,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Timer;
 
 import com.example.briefact.ocr.ImageTextReader;
 import com.example.briefact.utils.Constants;
@@ -84,19 +88,17 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
     private ImageView mImageView;
     private LinearProgressIndicator mProgressIndicator;
     private SwipeRefreshLayout mSwipeRefreshLayout;
-    private FloatingActionButton mFloatingActionButton;
 
-    public Animation show_fab_1;
-    public Animation hide_fab_1;
-    public Animation show_fab_2;
-    public Animation hide_fab_2;
-    public Animation show_fab_3;
-    public Animation hide_fab_3;
+    Button fab1;
+    Button fab2;
+    Button fab3;
 
-    FloatingActionButton fab;
-    FloatingActionButton fab1;
-    FloatingActionButton fab2;
-    FloatingActionButton fab3;
+    private FirebaseAuth firebaseAuth;
+    RecyclerView mRecyclerView;
+    StaggeredGridLayoutManager staggeredGridLayoutManager;
+    FirebaseUser firebaseUser;
+    FirebaseFirestore firebaseFirestore;
+    //FirestoreRecyclerAdapter<firebasemodel,NoteViewHolder> noteAdapter;
 
 
     @Override
@@ -104,31 +106,9 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main);
 
-        show_fab_1 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab1_show);
-        hide_fab_1 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab1_hide);
-        show_fab_2 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab2_show);
-        hide_fab_2 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab2_hide);
-        show_fab_3 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab3_show);
-        hide_fab_3 = AnimationUtils.loadAnimation(getApplication(), R.anim.fab3_hide);
-
-        fab = findViewById(R.id.fab);
         fab1 = findViewById(R.id.fab_1);
         fab2 = findViewById(R.id.fab_2);
         fab3 = findViewById(R.id.fab_3);
-
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (status == false) {
-                    expandFAB();
-                    status = true;
-                } else {
-                    hideFAB();
-                    status = false;
-                }
-            }
-        });
 
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,7 +130,10 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         mImageView = findViewById(R.id.source_image);
         mProgressIndicator = findViewById(R.id.progress_indicator);
         mSwipeRefreshLayout = findViewById(R.id.swipe_to_refresh);
-        mFloatingActionButton = fab1;
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         initDirectories();
         initializeOCR();
@@ -160,7 +143,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
     private void initViews() {
 
-        mFloatingActionButton.setOnClickListener(v -> {
+        fab1.setOnClickListener(v -> {
             if (isLanguageDataExists(mTrainingDataType, mLanguage)) {
                 if (mImageTextReader != null) {
                     selectImage();
@@ -230,6 +213,19 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         currentDirectory.mkdirs();
         currentDirectory = new File(dirFast, "tessdata");
         currentDirectory.mkdirs();
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager inputManager = (InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputManager.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+
+    }
+
+    private void openKeyboard() {
+        InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if(imm != null){
+            imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
+        }
     }
 
     private void initializeOCR() {
@@ -486,23 +482,15 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             super.onPreExecute();
             mProgressIndicator.setProgress(0);
             mProgressIndicator.setVisibility(View.VISIBLE);
-            mImageView.animate()
-                    .alpha(.2f)
-                    .setDuration(450)
-                    .start();
         }
 
         @Override
         protected void onPostExecute(String text) {
             mProgressIndicator.setVisibility(View.GONE);
-            mImageView.animate()
-                    .alpha(1f)
-                    .setDuration(450)
-                    .start();
             String clean_text = Html.fromHtml(text).toString().trim();
             Log.d(TAG, "onPostExecute: text\n" + clean_text);
             showOCRResult(clean_text);
-            Toast.makeText(MainActivityJ.this, "With Confidence:" + mImageTextReader.getAccuracy() + "%", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivityJ.this,  mImageTextReader.getAccuracy() + "%", Toast.LENGTH_SHORT).show();
 
             Utils.putLastUsedText(clean_text);
             Bitmap bitmap = loadBitmapFromStorage();
@@ -636,55 +624,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             }
             return result;
         }
-    }
-
-    private void expandFAB() {
-
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
-        layoutParams.rightMargin += (int) (fab1.getWidth() * 1.7);
-        layoutParams.bottomMargin += (int) (fab1.getHeight() * 0.25);
-        fab1.setLayoutParams(layoutParams);
-        fab1.startAnimation(show_fab_1);
-        fab1.setClickable(true);
-
-        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fab2.getLayoutParams();
-        layoutParams2.rightMargin += (int) (fab2.getWidth() * 1.5);
-        layoutParams2.bottomMargin += (int) (fab2.getHeight() * 1.5);
-        fab2.setLayoutParams(layoutParams2);
-        fab2.startAnimation(show_fab_2);
-        fab2.setClickable(true);
-
-        FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) fab3.getLayoutParams();
-        layoutParams3.rightMargin += (int) (fab3.getWidth() * 0.25);
-        layoutParams3.bottomMargin += (int) (fab3.getHeight() * 1.7);
-        fab3.setLayoutParams(layoutParams3);
-        fab3.startAnimation(show_fab_3);
-        fab3.setClickable(true);
-    }
-
-
-    private void hideFAB() {
-
-        FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) fab1.getLayoutParams();
-        layoutParams.rightMargin -= (int) (fab1.getWidth() * 1.7);
-        layoutParams.bottomMargin -= (int) (fab1.getHeight() * 0.25);
-        fab1.setLayoutParams(layoutParams);
-        fab1.startAnimation(hide_fab_1);
-        fab1.setClickable(false);
-
-        FrameLayout.LayoutParams layoutParams2 = (FrameLayout.LayoutParams) fab2.getLayoutParams();
-        layoutParams2.rightMargin -= (int) (fab2.getWidth() * 1.5);
-        layoutParams2.bottomMargin -= (int) (fab2.getHeight() * 1.5);
-        fab2.setLayoutParams(layoutParams2);
-        fab2.startAnimation(hide_fab_2);
-        fab2.setClickable(false);
-
-        FrameLayout.LayoutParams layoutParams3 = (FrameLayout.LayoutParams) fab3.getLayoutParams();
-        layoutParams3.rightMargin -= (int) (fab3.getWidth() * 0.25);
-        layoutParams3.bottomMargin -= (int) (fab3.getHeight() * 1.7);
-        fab3.setLayoutParams(layoutParams3);
-        fab3.startAnimation(hide_fab_3);
-        fab3.setClickable(false);
     }
 
     @Override

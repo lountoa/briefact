@@ -1,17 +1,13 @@
 package com.example.briefact.registration
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.briefact.MainActivityJ
 import com.example.briefact.R
-import com.example.briefact.signInOrRegister.LoginActivity
 
 class CheckFragment : Fragment() {
     override fun onCreateView(

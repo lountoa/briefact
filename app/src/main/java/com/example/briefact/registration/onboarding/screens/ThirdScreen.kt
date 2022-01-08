@@ -9,10 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.briefact.R
 import kotlinx.android.synthetic.main.fragment_third_screen.view.*
-import androidx.navigation.fragment.findNavController
 import com.example.briefact.signInOrRegister.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.example.briefact.MainActivity
 import com.example.briefact.signInOrRegister.RegistrationActivity
 import android.app.Activity
 
