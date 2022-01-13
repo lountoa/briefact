@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-
     <LinearLayout
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
@@ -40,6 +39,12 @@
             android:layout_gravity="center_vertical"
             android:fontFamily="@font/montserrat_medium"
             android:background="@drawable/background_on_button_click" />
+
+        <ProgressBar
+            android:id="@+id/progressbar_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
     </LinearLayout>
 
     <EditText

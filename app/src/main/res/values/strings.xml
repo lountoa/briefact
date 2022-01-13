@@ -13,6 +13,8 @@
     <string name="your_skan">Your scan:</string>
     <string name="will_be_here">*will appear here*</string>
     <string name="add">Finish</string>
+    <string name="empty_notes">Here could be your first note. Make it!</string>
+
     <string name="bottom_sheet_dialog_hint_title">Title</string>
     <string name="login_failed">"Login failed due technical problems. Check your internet connection and try again later!"</string>
     <string name="welcome1">Welcome to your own briefact!</string>
@@ -36,13 +38,13 @@
 
     <!-- registration -->
     <string name="emailWarning">Email was not entered</string>
-    <string name="nameWarning">Name was not entered</string>
     <string name="passwordWarning">Password mismatch!</string>
     <string name="registerSuccess">Account was successfully created!</string>
     <string name="registerFailed">Account was not created due some technical problems. Try again later!</string>
     <string name="registerFailedPasOrEmail">All inputs required!</string>
     <string name="next">next</string>
     <string name="finish">Finish</string>
+    <string name="last">Last scan</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!--Notes-->

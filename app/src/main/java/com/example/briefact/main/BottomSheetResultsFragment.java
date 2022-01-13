@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +50,7 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
     ImageButton btnCopy;
     ImageButton btnShare;
     Button btnSave;
+    ProgressBar prgSheet;
 
 
     private Context context;
@@ -55,6 +58,7 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.d("Сейчас в", "BottomSheetResults");
 
         View v = inflater.inflate(R.layout.bottom_sheet_dialog_results, container, false);
 
@@ -71,6 +75,7 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
         btnShare = v.findViewById(R.id.btn_share);
 
         btnSave = v.findViewById(R.id.resultant_save);
+        prgSheet = v.findViewById(R.id.progressbar_bottom_sheet);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -85,6 +90,7 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
                 if (title.isEmpty()) {
                     Toast.makeText(context, R.string.noTitle, Toast.LENGTH_LONG).show();
                 } else {
+                    prgSheet.setVisibility(View.VISIBLE);
                     DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("userNotes").document();
                     Map<String, Object> note = new HashMap<>();
                     note.put("title", title);
@@ -100,6 +106,7 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(context, R.string.noteNotCreated, Toast.LENGTH_LONG).show();
+                            prgSheet.setVisibility(GONE);
                         }
                     });
                 }

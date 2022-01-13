@@ -87,7 +87,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
-            android:layout_width="255dp"
+            android:layout_width="275dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +104,8 @@
                 android:drawableStart="@drawable/ic_baseline_password_24"
                 android:drawablePadding="12dp"
                 android:background="#0000"
-                android:maxLines="1"
+                android:lines="1"
+                android:textSize="16sp"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="@string/login_password"
                 android:textColorHint="#333333"
@@ -116,7 +117,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/loginEmail1"
-            android:layout_width="255dp"
+            android:layout_width="275dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,9 +128,10 @@
                 android:id="@+id/loginEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableStart="@drawable/ic_baseline_alternate_email_24"
+                android:drawableStart="@drawable/ic_baseline_mail_24"
                 android:drawablePadding="12dp"
                 android:layout_marginTop="16dp"
+                android:textSize="16sp"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="@string/login_email"
                 android:textColorHint="#333333"

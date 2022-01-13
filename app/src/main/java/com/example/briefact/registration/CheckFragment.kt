@@ -2,6 +2,7 @@ package com.example.briefact.registration
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ class CheckFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("Сейчас в", "CheckFragment")
 
         if(onBoardingFinished()){
             findNavController().navigate(R.id.action_splashFragment_to_viewPagerFragment)

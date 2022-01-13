@@ -2,6 +2,7 @@ package com.example.briefact.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class SettingsActivity extends AppCompatActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
+            Log.d("Сейчас в", "SettingsFragment");
 
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
             String email = Objects.requireNonNull(mAuth.getCurrentUser()).getEmail();

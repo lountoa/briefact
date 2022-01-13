@@ -14,7 +14,8 @@
     <string name="will_be_here">*появится тут*</string>
     <string name="add">Добавить</string>
     <string name="bottom_sheet_dialog_hint_title">Введите название</string>
-    <string name="login_failed">Вход не был выполнен, неверный логин или пароль. Проверьте подключение к интернету!</string>
+    <string name="login_failed">Вход не был выполнен</string>
+    <string name="empty_notes">Здесь могла бы быть ваша первая заметка. Создайте ее!</string>
 
 
     <!-- on boarding -->
@@ -38,10 +39,9 @@
 
     <!-- registration -->
     <string name="emailWarning">Email не был введен</string>
-    <string name="nameWarning">Имя было не введено</string>
     <string name="passwordWarning">Несовпадение паролей!</string>
     <string name="registerSuccess">Супер! Аккаунт создан!</string>
-    <string name="registerFailed">Аккаунт не был создан по техническим причинам. Проверьте соединение с интернетом!</string>
+    <string name="registerFailed">Аккаунт не был создан</string>
     <string name="registerFailedPasOrEmail">Не все данные введены!</string>
     <string name="noTitle">Вы не ввели название</string>
     <string name="noteCreated">Успешно!</string>
@@ -49,6 +49,7 @@
 
     <string name="next">Далее</string>
     <string name="finish">Готово</string>
+    <string name="last">Последний скан</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 

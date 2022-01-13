@@ -53,8 +53,9 @@
         android:textAllCaps="false"
         android:textColor="@color/mainColor2"
         android:textSize="34sp"
-        android:layout_marginBottom="8dp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

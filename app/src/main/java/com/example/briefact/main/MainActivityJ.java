@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -16,27 +14,35 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Html;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.briefact.R;
 
+import com.example.briefact.firebaseUtils.firebasemodel;
+import com.example.briefact.splash.ui.SplashActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -52,7 +58,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Timer;
 
 import com.example.briefact.ocr.ImageTextReader;
 import com.example.briefact.utils.Constants;
@@ -63,7 +68,6 @@ import com.example.briefact.utils.Utils;
 public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.ProgressNotifier {
 
     private static final String TAG = "MainActivity";
-    private static long back_pressed;
 
     private static final int REQUEST_CODE_SETTINGS = 797;
     private static final int REQUEST_CODE_SELECT_IMAGE = 172;
@@ -85,30 +89,54 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
     private String mLanguage;
     private int mPageSegMode;
     private AlertDialog dialog;
-    private ImageView mImageView;
     private LinearProgressIndicator mProgressIndicator;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     Button fab1;
     Button fab2;
     Button fab3;
+    TextView emptyRecycler;
 
-    private FirebaseAuth firebaseAuth;
     RecyclerView mRecyclerView;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
+
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
-    //FirestoreRecyclerAdapter<firebasemodel,NoteViewHolder> noteAdapter;
+
+    FirestoreRecyclerAdapter<firebasemodel,NoteViewHolder> noteAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_main);
+        Log.d("Сейчас в", "MainActivityJ");
+
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+
+        Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("userNotes").orderBy("title",Query.Direction.ASCENDING);
+
+        FirestoreRecyclerOptions<firebasemodel> allusernotes= new FirestoreRecyclerOptions.Builder<firebasemodel>().setQuery(query,firebasemodel.class).build();
+
+        noteAdapter = new FirestoreRecyclerAdapter<firebasemodel, NoteViewHolder>(allusernotes) {
+            @Override
+            protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull firebasemodel firebaseModel) {
+                noteViewHolder.noteTitle.setText(firebaseModel.getTitle());
+            }
+
+            @NonNull
+            @Override
+            public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.note_layout, parent, false);
+                return new NoteViewHolder(view);
+            }
+        };
 
         fab1 = findViewById(R.id.fab_1);
         fab2 = findViewById(R.id.fab_2);
         fab3 = findViewById(R.id.fab_3);
+        emptyRecycler = findViewById(R.id.empty_view);
 
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,18 +155,52 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         SpUtil.getInstance().init(this);
         crashUtils = new CrashUtils(getApplicationContext(), "");
 
-        mImageView = findViewById(R.id.source_image);
         mProgressIndicator = findViewById(R.id.progress_indicator);
-        mSwipeRefreshLayout = findViewById(R.id.swipe_to_refresh);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        mRecyclerView = findViewById(R.id.noteList);
+        mRecyclerView.setHasFixedSize(true);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
+        mRecyclerView.setAdapter(noteAdapter);
+
+        if (noteAdapter == null) {
+            mRecyclerView.setVisibility(View.GONE);
+            emptyRecycler.setVisibility(View.VISIBLE);
+        } else {
+            mRecyclerView.setVisibility(View.VISIBLE);
+            emptyRecycler.setVisibility(View.GONE);
+        }
 
         initDirectories();
         initializeOCR();
         initIntent();
         initViews();
+    }
+
+    public static class NoteViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView noteTitle;
+        LinearLayout mNote;
+
+        public NoteViewHolder(@NonNull View itemView) {
+            super(itemView);
+            noteTitle = itemView.findViewById(R.id.notetitle);
+            mNote = itemView.findViewById(R.id.note);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        noteAdapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (noteAdapter != null) {
+            noteAdapter.startListening();
+        }
     }
 
     private void initViews() {
@@ -155,32 +217,8 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             }
         });
 
-        mSwipeRefreshLayout.setOnRefreshListener(() -> {
-            if (isLanguageDataExists(mTrainingDataType, mLanguage)) {
-                if (mImageTextReader != null) {
-                    Drawable drawable = mImageView.getDrawable();
-                    if (drawable != null) {
-                        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-                        if (bitmap != null) {
-                            isRefresh = true;
-                            new ConvertImageToTextTask().execute(bitmap);
-                        }
-                    }
-                } else {
-                    initializeOCR();
-                }
-            } else {
-                downloadLanguageData(mTrainingDataType, mLanguage);
-            }
-            mSwipeRefreshLayout.setRefreshing(false);
-
-        });
-
         if (Utils.isPersistData()) {
             Bitmap bitmap = loadBitmapFromStorage();
-            if (bitmap != null) {
-                mImageView.setImageBitmap(bitmap);
-            }
         }
     }
 
@@ -192,7 +230,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             if (type.startsWith("image/")) {
                 Uri imageUri = intent.getParcelableExtra(Intent.EXTRA_STREAM);
                 if (imageUri != null) {
-                    mImageView.setImageURI(imageUri);
                     CropImage.activity(imageUri).start(this);
                 }
             }
@@ -226,6 +263,13 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         if(imm != null){
             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, SplashActivity.class);
+        intent.putExtra("back", "restore");
+        startActivity(intent);
     }
 
     private void initializeOCR() {
@@ -366,7 +410,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mImageView.setImageURI(imageUri);
         convertImageToTextTask = new ConvertImageToTextTask();
         convertImageToTextTask.execute(bitmap);
     }
@@ -418,6 +461,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         }
 
         if (mImageTextReader != null) mImageTextReader.tearDownEverything();
+        noteAdapter.startListening();
     }
 
     @Override
@@ -494,9 +538,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
             Utils.putLastUsedText(clean_text);
             Bitmap bitmap = loadBitmapFromStorage();
-            if (bitmap != null) {
-                mImageView.setImageBitmap(bitmap);
-            }
         }
 
     }
@@ -625,15 +666,4 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             return result;
         }
     }
-
-    @Override
-    public void onBackPressed() {
-        if (back_pressed + 2000 > System.currentTimeMillis())
-            super.onBackPressed();
-        else
-            Toast.makeText(getBaseContext(), "Press once again to exit!",
-                    Toast.LENGTH_SHORT).show();
-        back_pressed = System.currentTimeMillis();
-    }
-
 }

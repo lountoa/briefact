@@ -20,13 +20,20 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        Log.d("Сейчас в", "SplashActivity")
         show_logo = AnimationUtils.loadAnimation(application, R.anim.logo_splash)
         val layoutParams2 = splashActivityLogo.layoutParams
         splashActivityLogo.layoutParams = layoutParams2
         splashActivityLogo.startAnimation(show_logo)
         splashActivityLogo.isClickable = true
         auth = FirebaseAuth.getInstance()
-        checkIfUserIsLoggedIn()
+        val caller = intent.getStringExtra("back")
+
+        if (caller == "restore") {
+            checkIfUserIsLoggedIn()
+        } else {
+            checkIfUserIsLoggedIn()
+        }
     }
 
     private fun checkIfUserIsLoggedIn() {
