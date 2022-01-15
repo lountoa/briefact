@@ -97,7 +97,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputLayout2"
-                    android:layout_width="275dp"
+                    android:layout_width="280dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -116,6 +116,7 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:hint="@string/login_email"
                         android:inputType="textEmailAddress"
+                        android:maxLines="1"
                         android:padding="24sp"
                         app:layout_constraintEnd_toEndOf="@+id/title2"
                         app:layout_constraintStart_toStartOf="@+id/title2"
@@ -147,6 +148,7 @@
                         android:hint="@string/login_password"
                         android:textSize="16sp"
                         android:inputType="textPassword"
+                        android:maxLines="1"
                         android:padding="24sp"
                         app:layout_constraintEnd_toEndOf="@+id/title2"
                         app:layout_constraintStart_toStartOf="@+id/title2"
@@ -177,6 +179,7 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:hint="@string/login_password_confirm"
                         android:inputType="textPassword"
+                        android:maxLines="1"
                         android:textSize="16sp"
                         android:padding="24sp"
                         android:textColorHint="@color/textColor" />

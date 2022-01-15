@@ -17,7 +17,7 @@
         tools:progress="20"
         tools:visibility="visible"/>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,57 +25,71 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/noteList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
             android:visibility="visible"
-            android:scrollbars="vertical"/>
+            app:layout_constraintBottom_toTopOf="@+id/bottom_panel"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/empty_view"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="24sp"
-            android:gravity="center"
-            android:textColor="@color/WhiteSmoke"
             android:fontFamily="@font/roboto_light"
+            android:gravity="center"
             android:text="@string/empty_notes"
-            android:visibility="visible"/>
+            android:textColor="@color/WhiteSmoke"
+            android:textSize="24sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/bottom_panel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:src="@drawable/background_bottom"/>
+            android:src="@drawable/background_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/fab_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:focusable="true"
             android:layout_gravity="bottom|center_horizontal"
-            android:background="@drawable/ic_add_huge"/>
+            android:background="@drawable/ic_add_huge"
+            android:focusable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="8dp"
             android:layout_gravity="bottom|end"
-            android:orientation="vertical">
+            android:focusable="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fab_1"
+            app:layout_constraintTop_toTopOf="@+id/bottom_panel">
 
             <Button
                 android:id="@+id/fab_2"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_settings"/>
+                android:background="@drawable/ic_settings" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/settings"/>
+                android:text="@string/settings" />
 
         </LinearLayout>
 
@@ -83,25 +97,27 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:focusable="true"
-            android:layout_marginStart="32dp"
-            android:layout_marginBottom="8dp"
             android:layout_gravity="bottom|start"
-            android:orientation="vertical">
+            android:focusable="true"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fab_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bottom_panel">
 
             <Button
                 android:id="@+id/fab_3"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_recent"/>
+                android:background="@drawable/ic_recent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/last"/>
+                android:text="@string/last" />
 
         </LinearLayout>
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

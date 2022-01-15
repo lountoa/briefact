@@ -14,13 +14,16 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,12 +38,17 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.example.briefact.R;
 
 import com.example.briefact.firebaseUtils.firebasemodel;
+import com.example.briefact.note.EditNoteActivity;
+import com.example.briefact.note.InfoNoteActivity;
 import com.example.briefact.splash.ui.SplashActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.googlecode.tesseract.android.TessBaseAPI;
@@ -99,6 +107,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
     RecyclerView mRecyclerView;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
 
+    FirebaseAuth auth;
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
 
@@ -114,6 +123,9 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+
+        checkIfUserIsLoggedIn();
 
         Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("userNotes").orderBy("title",Query.Direction.ASCENDING);
 
@@ -122,7 +134,66 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         noteAdapter = new FirestoreRecyclerAdapter<firebasemodel, NoteViewHolder>(allusernotes) {
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull firebasemodel firebaseModel) {
+
+                ImageView noteSettings = noteViewHolder.itemView.findViewById(R.id.noteSettings);
                 noteViewHolder.noteTitle.setText(firebaseModel.getTitle());
+
+                String docId = noteAdapter.getSnapshots().getSnapshot(i).getId();
+
+                noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), InfoNoteActivity.class);
+                        intent.putExtra("title", firebaseModel.getTitle());
+                        intent.putExtra("content", firebaseModel.getContent());
+                        intent.putExtra("noteId", docId);
+
+                        v.getContext().startActivity(intent);
+                    }
+                });
+
+                noteSettings.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
+                        popupMenu.setGravity(Gravity.END);
+                        popupMenu.getMenu().add(R.string.edit).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                Intent intent = new Intent(v.getContext(), EditNoteActivity.class);
+                                intent.putExtra("title", firebaseModel.getTitle());
+                                intent.putExtra("content", firebaseModel.getContent());
+                                intent.putExtra("noteId", docId);
+                                v.getContext().startActivity(intent);
+                                return false;
+                            }
+                        });
+
+                        popupMenu.getMenu().add(R.string.delete).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                DocumentReference documentReference = firebaseFirestore.collection("notes")
+                                        .document(firebaseUser.getUid()).collection("userNotes").document(docId);
+                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(v.getContext(), R.string.deleted_successfully, Toast.LENGTH_LONG).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(v.getContext(), R.string.not_deleted, Toast.LENGTH_LONG).show();
+                                    }
+                                });
+
+                                return false;
+                            }
+                        });
+
+                        popupMenu.show();
+                    }
+                });
+
             }
 
             @NonNull
@@ -132,6 +203,8 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
                 return new NoteViewHolder(view);
             }
         };
+
+        noteAdapter.startListening();
 
         fab1 = findViewById(R.id.fab_1);
         fab2 = findViewById(R.id.fab_2);
@@ -170,11 +243,18 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             mRecyclerView.setVisibility(View.VISIBLE);
             emptyRecycler.setVisibility(View.GONE);
         }
-
         initDirectories();
         initializeOCR();
         initIntent();
         initViews();
+    }
+
+    private void checkIfUserIsLoggedIn() {
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser == null) {
+            Intent intent = new Intent(this, SplashActivity.class);
+            startActivity(intent);
+        }
     }
 
     public static class NoteViewHolder extends RecyclerView.ViewHolder {

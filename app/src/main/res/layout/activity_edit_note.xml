@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".note.EditNoteActivity"
+    android:background="@color/colorTextHint">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBarEditNote"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorNumberVehicle">
+
+        <EditText
+            android:id="@+id/editNoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/open_sans"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="12dp"
+            android:scrollHorizontally="true"
+            android:text="Title will be displayed here"
+            android:textColor="@color/colorBlack"
+            android:textSize="21sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        android:id="@+id/editNoteSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolBarEditNote"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/background_on_button_click"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="@string/save"
+        android:textAllCaps="false" />
+
+    <EditText
+        android:id="@+id/editNoteText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/editNoteSave"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/WhiteSmoke"
+        android:gravity="top|start"
+        android:text="Text will be displayed here."
+        android:textSize="18sp" />
+
+</RelativeLayout>

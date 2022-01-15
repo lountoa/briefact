@@ -51,6 +51,13 @@
     <string name="noTitle">Title required!</string>
     <string name="noteCreated">Note created successfully!</string>
     <string name="noteNotCreated">Failed to create note</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="deleted_successfully">Deleted successfully!</string>
+    <string name="not_deleted">Something went wrong. Note is not deleted</string>
+    <string name="note_updated">Note updated successfully!</string>
+    <string name="note_is_not_updated">Something went wrong. Note is not updated</string>
 
     <!--OCR USE-->
     <!-- various key to store the setting values -->
@@ -65,14 +72,14 @@
     <string name="key_persist_data" translatable="false">persist_data</string>
     <string name="key_language_for_tesseract_multi" translatable="false">multi_languages</string>
     <string name="key_ocr_psm_mode">key_ocr_psm_mode</string>
-    <string name="fbs" translatable="false" >Only Best(As for now)</string>
-    <string name="account_label" translatable="true" >Account info</string>
-    <string name="account_email_title" translatable="true" >Using account:</string>
-    <string name="account_email_content" translatable="true" >%1$d</string>
-    <string name="key_account_email_content" translatable="true" >%1$d</string>
-    <string name="account_name_title" translatable="true" >Username:</string>
-    <string name="account_name_content" translatable="true" >%1$s</string>
-    <string name="key_account_name_content" translatable="true" >%1$s</string>
+    <string name="fbs" translatable="false">Only Best(As for now)</string>
+    <string name="account_label" translatable="true">Account info</string>
+    <string name="account_email_title" translatable="true">Using account:</string>
+    <string name="account_email_content" translatable="true">%1$d</string>
+    <string name="key_account_email_content" translatable="true">%1$d</string>
+    <string name="account_name_title" translatable="true">Username:</string>
+    <string name="account_name_content" translatable="true">%1$s</string>
+    <string name="key_account_name_content" translatable="true">%1$s</string>
 
     <string name="key_contrast" translatable="false">process_contrast</string>
     <string name="key_un_sharp_masking" translatable="false">un_sharp_mask</string>
