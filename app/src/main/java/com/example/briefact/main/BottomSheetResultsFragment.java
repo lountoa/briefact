@@ -23,8 +23,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 
 import com.example.briefact.R;
+import com.example.briefact.transtate.TranslateActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -50,7 +52,8 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
     ImageButton btnCopy;
     ImageButton btnShare;
     Button btnSave;
-    ProgressBar prgSheet;
+    Button btnTranslate;
+    CardView prgSheet;
 
 
     private Context context;
@@ -75,6 +78,7 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
         btnShare = v.findViewById(R.id.btn_share);
 
         btnSave = v.findViewById(R.id.resultant_save);
+        btnTranslate = v.findViewById(R.id.resultant_translate);
         prgSheet = v.findViewById(R.id.progressbar_bottom_sheet);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -110,6 +114,16 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
                         }
                     });
                 }
+            }
+        });
+        
+        btnTranslate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String content = resultantText.getText().toString();
+                Intent intent = new Intent(getActivity(), TranslateActivity.class);
+                intent.putExtra("content",content);
+                startActivity(intent);
             }
         });
 

@@ -13,6 +13,8 @@
     <string name="your_skan">Готовый текст:</string>
     <string name="will_be_here">*появится тут*</string>
     <string name="add">Добавить</string>
+    <string name="translate_title">Перевод текста на другой язык</string>
+    <string name="translate">Перевод</string>
     <string name="bottom_sheet_dialog_hint_title">Введите название</string>
     <string name="login_failed">Вход не был выполнен</string>
     <string name="empty_notes">Здесь могла бы быть ваша первая заметка. Создайте ее!</string>
@@ -145,4 +147,13 @@
     <string name="image_processing_functions">Image processing functions</string>
     <string name="advance_tesseract_settings">Advance Tesseract Settings</string>
     <string name="psm_summary">It directs how Tesseract splits image in lines of text and words.</string>
+
+    <!--Languages-->
+    <string name="lan_english">Английский</string>
+    <string name="lan_arabic">Арабский</string>
+    <string name="lan_belarusian">Белорусский</string>
+    <string name="lan_bulgarian">Bulgarian</string>
+    <string name="lan_czech">Чешский</string>
+    <string name="lan_russian">Русский</string>
+    <string name="lan_hindi">Хинди</string>
 </resources>

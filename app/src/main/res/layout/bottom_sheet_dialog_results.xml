@@ -31,27 +31,62 @@
             android:contentDescription="@string/generic_image_description"
             app:srcCompat="@drawable/ic_baseline_share_24" />
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/progressbar_bottom_sheet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTintMode="screen"
+                android:indeterminateTint="@color/mainColor4"/>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/action_bar_2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/action_bar"
+        android:background="@color/elevatedSurface"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/resultant_translate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/background_on_button_click"
+            android:fontFamily="@font/open_sans"
+            android:padding="10dp"
+            android:text="@string/translate"
+            android:textAllCaps="false" />
+
+
         <Button
             android:id="@+id/resultant_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add"
             android:layout_gravity="center_vertical"
-            android:fontFamily="@font/montserrat_medium"
-            android:background="@drawable/background_on_button_click" />
-
-        <ProgressBar
-            android:id="@+id/progressbar_bottom_sheet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
+            android:layout_marginStart="36dp"
+            android:background="@drawable/background_on_button_click"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/add"
+            android:textAllCaps="false" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/resultant_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/action_bar"
+        android:layout_below="@id/action_bar_2"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/open_sans"
@@ -80,6 +115,7 @@
             android:textColor="@color/background"
             android:textIsSelectable="false"
             android:textSize="16sp"
+            android:hint="Переведенный текст отобразится тут"
             tools:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet." />
     </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

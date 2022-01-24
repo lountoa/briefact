@@ -1,5 +1,7 @@
 package com.example.briefact.main;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,7 +20,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -31,6 +35,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -103,6 +108,8 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
     Button fab2;
     Button fab3;
     TextView emptyRecycler;
+    LinearLayout rootFrame;
+    ConstraintLayout mainView;
 
     RecyclerView mRecyclerView;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
@@ -126,6 +133,10 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         auth = FirebaseAuth.getInstance();
 
         checkIfUserIsLoggedIn();
+
+        rootFrame = findViewById(R.id.rootFrame);
+        mainView = findViewById(R.id.mainView);
+
 
         Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("userNotes").orderBy("title",Query.Direction.ASCENDING);
 
@@ -343,6 +354,34 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         if(imm != null){
             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
         }
+    }
+
+    void startRevealAnimation() {
+
+        int cx = rootFrame.getMeasuredWidth() / 2;
+        int cy = rootFrame.getMeasuredHeight() / 2;
+
+        Animator anim =
+                ViewAnimationUtils.createCircularReveal(mainView, cx, cy, 50, rootFrame.getWidth());
+
+        anim.setDuration(500);
+        anim.setInterpolator(new AccelerateInterpolator(2));
+        anim.addListener(new AnimatorListenerAdapter() {
+
+            @Override
+            public void onAnimationStart(Animator animation) {
+                super.onAnimationStart(animation);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+
+                mRecyclerView.setVisibility(View.VISIBLE);
+            }
+        });
+
+        anim.start();
     }
 
     @Override

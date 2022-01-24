@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".transtate.TranslateActivity"
+    android:background="@color/WhiteSmoke">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_indicator"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            app:indicatorColor="@color/mainColor5"
+            app:layout_constraintEnd_toEndOf="@+id/idTranslatedTV"
+            app:layout_constraintStart_toStartOf="@+id/idTranslatedTV"
+            app:layout_constraintTop_toBottomOf="@+id/idBtnTranslation"
+            tools:visibility="gone" />
+
+        <Button
+            android:id="@+id/copy_translate"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/background_on_button_click"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/copy_to_clipboard"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idTranslatedTV" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="366dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/background_translate_plate"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Spinner
+                android:id="@+id/idFromSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="3dp" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_compare_arrows_24" />
+
+            <Spinner
+                android:id="@+id/idToSpinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:layout_weight="1"
+                android:padding="3dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/idTranslatedTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_translate_plate"
+            android:elevation="3dp"
+            android:padding="16sp"
+            android:textColor="@color/colorBlack"
+            android:text="Translated text here"
+            android:textIsSelectable="false"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+            app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/idBtnTranslation" />
+
+        <Button
+            android:id="@+id/idBtnTranslation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="20dp"
+            android:background="@drawable/background_on_button_click"
+            android:fontFamily="@font/open_sans"
+            android:text="@string/translate"
+            android:gravity="center"
+            android:textAllCaps="false"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="26dp"
+            android:background="@drawable/background_translate_plate"
+            android:elevation="8dp"
+            android:padding="5dp"
+            app:boxBackgroundMode="none"
+            app:hintEnabled="false"
+
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idEditSource"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:gravity="top"
+                android:importantForAutofill="no"
+                android:inputType="textImeMultiLine|textMultiLine"
+                android:text="Text will be here"
+                android:textColor="@color/colorBlack"
+                android:textSize="19sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
