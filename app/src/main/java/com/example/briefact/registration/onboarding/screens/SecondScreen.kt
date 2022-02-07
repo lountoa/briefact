@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.example.briefact.signInOrRegister.RegistrationActivity
 import android.app.Activity
 
-class ThirdScreen : Fragment() {
+class SecondScreen : Fragment() {
 
     private lateinit var mAuth: FirebaseAuth
 

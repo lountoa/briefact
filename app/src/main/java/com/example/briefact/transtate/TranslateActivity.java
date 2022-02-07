@@ -41,8 +41,8 @@ public class TranslateActivity extends AppCompatActivity {
     private TextView translateTV;
     private LinearProgressIndicator mProgressIndicator;
 
-    String[] fromLanguage = {"English", "Arabic", "Belarusian", "Bulgarian", "Czech", "Hindi", "Russian"};
-    String[] toLanguage = {"English", "Arabic", "Belarusian", "Bulgarian", "Czech", "Hindi", "Russian"};
+    String[] fromLanguage = {"From", "English", "Arabic", "Belarusian", "Bulgarian", "Czech", "Hindi", "Russian"};
+    String[] toLanguage = {"To", "English", "Arabic", "Belarusian", "Bulgarian", "Czech", "Hindi", "Russian"};
 
     private static final int REQUEST_PERMISSION_CODE = 1;
     int languageCode, fromLanguageCode, toLanguageCode = 0;
@@ -94,6 +94,7 @@ public class TranslateActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
+
         ArrayAdapter toAdapter = new ArrayAdapter(this, R.layout.spinner_translate_item, toLanguage);
         toAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         toSpinner.setAdapter(fromAdapter);
@@ -105,9 +106,9 @@ public class TranslateActivity extends AppCompatActivity {
                 translateTV.setVisibility(View.VISIBLE);
                 translateTV.setText("");
                 if (fromLanguageCode == 0){
-                    Toast.makeText(TranslateActivity.this, "Please select Source Language", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TranslateActivity.this, R.string.translate_source, Toast.LENGTH_SHORT).show();
                 }else if (toLanguageCode == 0){
-                    Toast.makeText(TranslateActivity.this, "Please select the language to make translation", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TranslateActivity.this, R.string.translate_target, Toast.LENGTH_SHORT).show();
                 } else {
                     translateText(fromLanguageCode, toLanguageCode, sourceText.getText().toString());
                     mProgressIndicator.setVisibility(View.VISIBLE);
@@ -117,13 +118,14 @@ public class TranslateActivity extends AppCompatActivity {
 
         copyBtn.setOnClickListener(v12 -> {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-            ClipData clip = ClipData.newPlainText("translated_note", translateTV.toString());
+            ClipData clip = ClipData.newPlainText("translated_note", translateTV.getText().toString());
             clipboard.setPrimaryClip(clip);
+            Toast.makeText(TranslateActivity.this, R.string.copied_to_clipboard, Toast.LENGTH_SHORT).show();
         });
 
     }
     private void translateText(int fromLanguageCode, int toLanguageCode, String source) {
-        translateTV.setText("Downloading model, please wait...");
+        translateTV.setText(R.string.translate_downloading);
         FirebaseTranslatorOptions options = new FirebaseTranslatorOptions.Builder()
                 .setSourceLanguage(fromLanguageCode)
                 .setTargetLanguage(toLanguageCode)
@@ -133,7 +135,7 @@ public class TranslateActivity extends AppCompatActivity {
         translator.downloadModelIfNeeded(conditions).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                translateTV.setText("Translation..");
+                translateTV.setText(R.string.translation);
                 translator.translate(source).addOnSuccessListener(new OnSuccessListener<String>() {
                     @Override
                     public void onSuccess(String s) {
@@ -143,14 +145,14 @@ public class TranslateActivity extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(TranslateActivity.this, "Failed to translate!! try again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TranslateActivity.this, R.string.translation_failed, Toast.LENGTH_SHORT).show();
                     }
                 });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(TranslateActivity.this, "Failed to download model!! Check your internet connection.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TranslateActivity.this, R.string.translate_failed_downloading, Toast.LENGTH_SHORT).show();
             }
         });
     }

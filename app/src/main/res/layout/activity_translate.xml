@@ -31,12 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:background="@drawable/background_on_button_click"
             android:fontFamily="@font/open_sans"
             android:text="@string/copy_to_clipboard"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idTranslatedTV" />
 
         <LinearLayout
@@ -74,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="3dp"
+                android:layout_marginEnd="16dp"
                 android:layout_weight="1"
                 android:padding="3dp" />
 
@@ -89,7 +90,7 @@
             android:elevation="3dp"
             android:padding="16sp"
             android:textColor="@color/colorBlack"
-            android:text="Translated text here"
+            android:text="@string/translate_here"
             android:textIsSelectable="false"
             android:textSize="16sp"
             android:visibility="visible"
@@ -105,16 +106,17 @@
             android:layout_margin="20dp"
             android:background="@drawable/background_on_button_click"
             android:fontFamily="@font/open_sans"
-            android:text="@string/translate"
             android:gravity="center"
+            android:text="@string/translate"
             android:textAllCaps="false"
             android:textSize="19sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
-            android:layout_width="0dp"
+            android:layout_width="366dp"
             android:layout_height="250dp"
             android:layout_marginTop="26dp"
             android:background="@drawable/background_translate_plate"
@@ -135,9 +137,9 @@
                 android:gravity="top"
                 android:importantForAutofill="no"
                 android:inputType="textImeMultiLine|textMultiLine"
-                android:text="Text will be here"
+                android:hint="@string/translate_text"
                 android:textColor="@color/colorBlack"
-                android:textSize="19sp" />
+                android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

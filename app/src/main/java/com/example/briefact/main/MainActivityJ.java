@@ -35,7 +35,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.Person;
 import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -104,9 +106,13 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
     private AlertDialog dialog;
     private LinearProgressIndicator mProgressIndicator;
 
+    TextView languageTv;
+
     Button fab1;
     Button fab2;
     Button fab3;
+    SearchView noteSearch;
+    ImageView noteSettings;
     TextView emptyRecycler;
     LinearLayout rootFrame;
     ConstraintLayout mainView;
@@ -137,6 +143,11 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         rootFrame = findViewById(R.id.rootFrame);
         mainView = findViewById(R.id.mainView);
 
+        noteSearch = findViewById(R.id.note_search);
+        noteSearch.setFocusable(false);
+
+        languageTv = findViewById(R.id.text_language);
+
 
         Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("userNotes").orderBy("title",Query.Direction.ASCENDING);
 
@@ -146,10 +157,11 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull firebasemodel firebaseModel) {
 
-                ImageView noteSettings = noteViewHolder.itemView.findViewById(R.id.noteSettings);
+                noteSettings = noteViewHolder.itemView.findViewById(R.id.noteSettings);
                 noteViewHolder.noteTitle.setText(firebaseModel.getTitle());
 
                 String docId = noteAdapter.getSnapshots().getSnapshot(i).getId();
+
 
                 noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -247,13 +259,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
         mRecyclerView.setAdapter(noteAdapter);
 
-        if (noteAdapter == null) {
-            mRecyclerView.setVisibility(View.GONE);
-            emptyRecycler.setVisibility(View.VISIBLE);
-        } else {
-            mRecyclerView.setVisibility(View.VISIBLE);
-            emptyRecycler.setVisibility(View.GONE);
-        }
         initDirectories();
         initializeOCR();
         initIntent();
@@ -377,7 +382,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
 
-                mRecyclerView.setVisibility(View.VISIBLE);
+                rootFrame.setVisibility(View.VISIBLE);
             }
         });
 
@@ -397,6 +402,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         mLanguage = Utils.getTrainingDataLanguage();
         mPageSegMode=Utils.getPageSegMode();
 
+        languageTv.setText(String.format(getString(R.string.language_tv), mLanguage));
 
         switch (mTrainingDataType) {
             case "best":
@@ -645,6 +651,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             super.onPreExecute();
             mProgressIndicator.setProgress(0);
             mProgressIndicator.setVisibility(View.VISIBLE);
+
         }
 
         @Override

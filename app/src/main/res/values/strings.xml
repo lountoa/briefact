@@ -13,11 +13,10 @@
     <string name="your_skan">Your scan:</string>
     <string name="will_be_here">*will appear here*</string>
     <string name="add">Finish</string>
-    <string name="translate">Translate</string>
-    <string name="translate_title">Translate</string>
     <string name="empty_notes">Here could be your first note. Make it!</string>
+    <string name="search_here">Search notes</string>
 
-    <string name="bottom_sheet_dialog_hint_title">Title</string>
+    <string name="bottom_sheet_dialog_hint_title">Here\'s your title</string>
     <string name="login_failed">"Login failed due technical problems. Check your internet connection and try again later!"</string>
     <string name="welcome1">Welcome to your own briefact!</string>
     <string name="welcome12">This app was created for business people, students, teachers who want to provide and learn brief, interesting and quick information!</string>
@@ -56,6 +55,7 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="save">Save</string>
+    <string name="language_tv">Language: %s</string>
     <string name="deleted_successfully">Deleted successfully!</string>
     <string name="not_deleted">Something went wrong. Note is not deleted</string>
     <string name="note_updated">Note updated successfully!</string>
@@ -156,4 +156,16 @@
     <string name="lan_czech">Czech</string>
     <string name="lan_russian">Russian</string>
     <string name="lan_hindi">Hindi</string>
+
+    <!--Translation-->
+    <string name="translate">Translate</string>
+    <string name="translate_title">Translate</string>
+    <string name="translate_source">Please select Source Language</string>
+    <string name="translate_target">Please select the language to make translation</string>
+    <string name="translate_downloading">Downloading model, please wait…</string>
+    <string name="translate_here">Translated text appears here</string>
+    <string name="translate_text">Type some text here</string>
+    <string name="translation">Translation…</string>
+    <string name="translation_failed">Failed to translate! Try again…</string>
+    <string name="translate_failed_downloading">Failed to download model! Check your internet connection.</string>
 </resources>

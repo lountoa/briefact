@@ -148,6 +148,7 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
             resultantText.setText(R.string.no_results);
             resultantTitle.setVisibility(GONE);
             btnSave.setVisibility(GONE);
+            btnTranslate.setVisibility(GONE);
             btnCopy.setVisibility(GONE);
             btnShare.setVisibility(GONE);
             resultantText.setEnabled(false);

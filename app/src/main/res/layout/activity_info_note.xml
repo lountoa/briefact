@@ -46,10 +46,17 @@
             android:text="@string/edit"
             android:textAllCaps="false" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ScrollView>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/infoNoteLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="12dp"
             android:layout_below="@id/infoNoteEdit"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
@@ -60,22 +67,33 @@
             android:layout_marginBottom="12dp"
             android:background="@drawable/background_note_text">
 
-            <TextView
-                android:id="@+id/infoNoteText"
+
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="12dp"
-                android:gravity="top|start"
-                android:text="Text will be displayed here."
-                android:textIsSelectable="true"
-                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/infoNoteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:padding="12dp"
+                    android:gravity="top|start"
+                    android:text="Text will be displayed here."
+                    android:textIsSelectable="true"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </ScrollView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

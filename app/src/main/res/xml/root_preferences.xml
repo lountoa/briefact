@@ -87,7 +87,7 @@
             android:title="@string/source_code">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="https://github.com/DmitryLebovski/briefact-1" />
+                android:data="https://github.com/lountoa/briefact" />
         </Preference>
     </PreferenceCategory>
 

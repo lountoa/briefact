@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class Utils {
 
-    private static final String DEFAULT_LANGUAGE = "eng";
+    private static final String DEFAULT_LANGUAGE = "rus";
 
     @SuppressLint("DefaultLocale")
     public static String getSize(int size) {

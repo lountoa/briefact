@@ -59,11 +59,12 @@
 
         <Button
             android:id="@+id/resultant_translate"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/background_on_button_click"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="60dp"
+            android:background="@drawable/background_buttons_small"
             android:fontFamily="@font/open_sans"
             android:padding="10dp"
             android:text="@string/translate"
@@ -72,11 +73,10 @@
 
         <Button
             android:id="@+id/resultant_save"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginStart="36dp"
-            android:background="@drawable/background_on_button_click"
+            android:background="@drawable/background_buttons_small"
             android:fontFamily="@font/open_sans"
             android:text="@string/add"
             android:textAllCaps="false" />
@@ -87,7 +87,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/action_bar_2"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="6dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/open_sans"
         android:hint="@string/bottom_sheet_dialog_hint_title"

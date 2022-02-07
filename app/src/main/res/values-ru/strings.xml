@@ -13,8 +13,6 @@
     <string name="your_skan">Готовый текст:</string>
     <string name="will_be_here">*появится тут*</string>
     <string name="add">Добавить</string>
-    <string name="translate_title">Перевод текста на другой язык</string>
-    <string name="translate">Перевод</string>
     <string name="bottom_sheet_dialog_hint_title">Введите название</string>
     <string name="login_failed">Вход не был выполнен</string>
     <string name="empty_notes">Здесь могла бы быть ваша первая заметка. Создайте ее!</string>
@@ -25,6 +23,7 @@
     <string name="not_deleted">Что-то пошло не так, проверьте подключение к интернету.</string>
     <string name="note_updated">Информация обновлена!</string>
     <string name="note_is_not_updated">Что-то пошло не так, проверьте подключение к интернету.</string>
+    <string name="search_here">Поиск</string>
 
 
 
@@ -55,8 +54,9 @@
     <string name="registerFailedPasOrEmail">Не все данные введены!</string>
     <string name="noTitle">Вы не ввели название</string>
     <string name="noteCreated">Успешно!</string>
-    <string name="noteNotCreated">Failed to create note</string>
+    <string name="noteNotCreated">Заметка не создана по ошибке. Повторите еще раз</string>
 
+    <string name="language_tv">Язык: %s</string>
     <string name="next">Далее</string>
     <string name="finish">Готово</string>
     <string name="last">Последний скан</string>
@@ -156,4 +156,17 @@
     <string name="lan_czech">Чешский</string>
     <string name="lan_russian">Русский</string>
     <string name="lan_hindi">Хинди</string>
+
+    <!--Translations-->
+    <string name="translate">Перевод</string>
+    <string name="translate_title">Перевод текста на другой язык</string>
+    <string name="translate_source">Выберите исходных язык</string>
+    <string name="translate_target">Выберите язык для перевода</string>
+    <string name="translate_downloading">Загрузка…</string>
+    <string name="translate_here">Переведенный текст появится тут</string>
+    <string name="translate_text">Введите текст</string>
+    <string name="translation">Перевод…</string>
+    <string name="translation_failed">Не удалось сделать перевод! Попробуйте еще раз…</string>
+    <string name="translate_failed_downloading">Загрузка не удалась! Проверьте подключение к интернету.</string>
+
 </resources>
