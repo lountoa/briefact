@@ -6,10 +6,10 @@
 
     <rotate
         android:duration="200"
-        android:fromDegrees="0"
+        android:fromDegrees="45"
         android:pivotX="50%"
         android:pivotY="50%"
         android:startOffset="0"
-        android:toDegrees="45"/>
+        android:toDegrees="0"/>
 
 </set>

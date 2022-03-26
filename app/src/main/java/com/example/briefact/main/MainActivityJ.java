@@ -23,6 +23,8 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,8 +38,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.Person;
 import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -108,7 +110,11 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
     TextView languageTv;
 
-    Button fab1;
+    RecyclerView noteList;
+
+    CardView addPhoto, addText;
+
+    Button fabAdd;
     Button fab2;
     Button fab3;
     SearchView noteSearch;
@@ -116,6 +122,8 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
     TextView emptyRecycler;
     LinearLayout rootFrame;
     ConstraintLayout mainView;
+
+    Animation show, hide, rotate, rotateBack;
 
     RecyclerView mRecyclerView;
     StaggeredGridLayoutManager staggeredGridLayoutManager;
@@ -148,8 +156,21 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
         languageTv = findViewById(R.id.text_language);
 
+        noteList = findViewById(R.id.noteList);
 
-        Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("userNotes").orderBy("title",Query.Direction.ASCENDING);
+        addPhoto = findViewById(R.id.add_photo);
+        addText = findViewById(R.id.add_text);
+
+        show = AnimationUtils.loadAnimation(getApplication(), R.anim.fab1_show);
+        hide = AnimationUtils.loadAnimation(getApplication(), R.anim.fab1_hide);
+        rotate = AnimationUtils.loadAnimation(getApplication(), R.anim.rotate_anim);
+        rotateBack = AnimationUtils.loadAnimation(getApplication(), R.anim.rotate_back);
+
+        show = AnimationUtils.loadAnimation(getApplication(), R.anim.fab1_show);
+        hide = AnimationUtils.loadAnimation(getApplication(), R.anim.fab1_hide);
+
+        Query query = firebaseFirestore.collection("notes")
+                .document(firebaseUser.getUid()).collection("userNotes").orderBy("title",Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<firebasemodel> allusernotes= new FirestoreRecyclerOptions.Builder<firebasemodel>().setQuery(query,firebasemodel.class).build();
 
@@ -229,7 +250,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
         noteAdapter.startListening();
 
-        fab1 = findViewById(R.id.fab_1);
+        fabAdd = findViewById(R.id.fab_1);
         fab2 = findViewById(R.id.fab_2);
         fab3 = findViewById(R.id.fab_3);
         emptyRecycler = findViewById(R.id.empty_view);
@@ -258,6 +279,30 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
         mRecyclerView.setAdapter(noteAdapter);
+
+        noteSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                Query query;
+                if (s.toString().isEmpty()) {
+                    query = firebaseFirestore.collection("notes")
+                            .document(firebaseUser.getUid()).collection("userNotes").orderBy("title",Query.Direction.ASCENDING);
+                } else {
+                    query = firebaseFirestore.collection("notes")
+                            .document(firebaseUser.getUid()).collection("userNotes")
+                            .orderBy("title",Query.Direction.ASCENDING);
+                }
+                FirestoreRecyclerOptions<firebasemodel> options = new FirestoreRecyclerOptions.Builder<firebasemodel>().setQuery(query,firebasemodel.class).build();
+                noteAdapter.updateOptions(options);
+                noteAdapter.notifyDataSetChanged();
+                return false;
+            }
+        });
 
         initDirectories();
         initializeOCR();
@@ -301,15 +346,37 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
     private void initViews() {
 
-        fab1.setOnClickListener(v -> {
-            if (isLanguageDataExists(mTrainingDataType, mLanguage)) {
-                if (mImageTextReader != null) {
-                    selectImage();
-                } else {
-                    initializeOCR();
-                }
+
+        fabAdd.setOnClickListener(v -> {
+            if (status == false) {
+                showB();
+                addPhoto.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (isLanguageDataExists(mTrainingDataType, mLanguage)) {
+                            if (mImageTextReader != null) {
+                                selectImage();
+                                hideB();
+                            } else {
+                                initializeOCR();
+                                hideB();
+                            }
+                        } else {
+                            downloadLanguageData(mTrainingDataType, mLanguage);
+                            hideB();
+                        }
+
+                    }
+                });
+
+                addText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showOCRResult(getString(R.string.new_note));
+                    }
+                });
             } else {
-                downloadLanguageData(mTrainingDataType, mLanguage);
+                hideB();
             }
         });
 
@@ -359,6 +426,24 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         if(imm != null){
             imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0);
         }
+    }
+
+    private void showB() {
+        fabAdd.startAnimation(rotate);
+        status = true;
+        addPhoto.startAnimation(show);
+        addText.startAnimation(show);
+        addPhoto.setVisibility(View.VISIBLE);
+        addText.setVisibility(View.VISIBLE);
+    }
+
+    private void hideB() {
+        fabAdd.startAnimation(rotateBack);
+        status = false;
+        addPhoto.startAnimation(hide);
+        addText.startAnimation(hide);
+        addPhoto.setVisibility(View.GONE);
+        addText.setVisibility(View.GONE);
     }
 
     void startRevealAnimation() {
@@ -674,7 +759,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            mProgressDialog = new ProgressDialog(MainActivityJ.this);
+            mProgressDialog = new ProgressDialog(MainActivityJ.this, R.style.ProgressDialogStyle);
             mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             mProgressDialog.setIndeterminate(true);
             mProgressDialog.setCancelable(false);

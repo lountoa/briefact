@@ -16,7 +16,7 @@
 
     <PreferenceCategory android:title="@string/tesseract_data">
         <ListPreference
-            android:defaultValue="best"
+            android:defaultValue="standard"
             android:entries="@array/ocr_training_data_entries"
             android:entryValues="@array/key_ocr_training_data_entries_values"
             android:key="@string/key_tess_training_data_source"
@@ -32,7 +32,7 @@
             app:icon="@drawable/ic_baseline_checklist_24"/>
 
         <ListPreference
-            android:defaultValue="eng"
+            android:defaultValue="rus"
             android:entries="@array/ocr_engine_language"
             android:entryValues="@array/key_ocr_engine_language_value"
             android:key="@string/key_language_for_tesseract"

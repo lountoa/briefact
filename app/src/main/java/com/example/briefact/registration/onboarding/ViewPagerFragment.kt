@@ -17,7 +17,6 @@ class ViewPagerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_view_pager, container, false)
 
         val fragmentList = arrayListOf<Fragment>(
@@ -32,7 +31,7 @@ class ViewPagerFragment : Fragment() {
         )
 
         view.viewPager.adapter = adapter
-        view.viewPager.setPageTransformer(MarginPageTransformer(1500))
+        view.viewPager.setPageTransformer(MarginPageTransformer(100))
 
         return view
     }

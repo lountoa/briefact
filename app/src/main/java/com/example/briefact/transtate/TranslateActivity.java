@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,16 +21,14 @@ import android.widget.Toast;
 import com.example.briefact.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.ml.common.modeldownload.FirebaseModelDownloadConditions;
-import com.google.firebase.ml.naturallanguage.FirebaseNaturalLanguage;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslateLanguage;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslator;
-import com.google.firebase.ml.naturallanguage.translate.FirebaseTranslatorOptions;
+import com.google.mlkit.nl.translate.TranslateLanguage;
+import com.google.mlkit.nl.translate.Translation;
+import com.google.mlkit.nl.translate.Translator;
+import com.google.mlkit.nl.translate.TranslatorOptions;
+
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class TranslateActivity extends AppCompatActivity {
 
@@ -41,11 +38,29 @@ public class TranslateActivity extends AppCompatActivity {
     private TextView translateTV;
     private LinearProgressIndicator mProgressIndicator;
 
-    String[] fromLanguage = {"From", "English", "Arabic", "Belarusian", "Bulgarian", "Czech", "Hindi", "Russian"};
-    String[] toLanguage = {"To", "English", "Arabic", "Belarusian", "Bulgarian", "Czech", "Hindi", "Russian"};
+    /*
+
+    String[] fromLanguage = {"From", (String) getText(R.string.lan_english),(String) getText(R.string.lan_arabic),
+            (String) getText(R.string.lan_belarusian),(String) getText(R.string.lan_bulgarian),
+            (String) getText(R.string.lan_czech), (String) getText(R.string.lan_hindi), (String) getText(R.string.lan_russian)};
+    String[] toLanguage = {"To", (String) getText(R.string.lan_english),(String) getText(R.string.lan_arabic),
+            (String) getText(R.string.lan_belarusian),(String) getText(R.string.lan_bulgarian),
+            (String) getText(R.string.lan_czech), (String) getText(R.string.lan_hindi), (String) getText(R.string.lan_russian)};
+    */
+
+    String[] fromLanguage = {"From", "English","Arabic",
+            "Belarusian", "Bulgarian",
+           "Czech", "Hindi", "Russian"};
+
+    String[] toLanguage = {"To", "English","Arabic",
+            "Belarusian", "Bulgarian",
+            "Czech", "Hindi", "Russian"};
 
     private static final int REQUEST_PERMISSION_CODE = 1;
-    int languageCode, fromLanguageCode, toLanguageCode = 0;
+    String fromLanguageCode, toLanguageCode;
+    String languageCode;
+
+    Translator translator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +112,7 @@ public class TranslateActivity extends AppCompatActivity {
 
         ArrayAdapter toAdapter = new ArrayAdapter(this, R.layout.spinner_translate_item, toLanguage);
         toAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        toSpinner.setAdapter(fromAdapter);
+        toSpinner.setAdapter(toAdapter);
 
 
         translateBtn.setOnClickListener(new View.OnClickListener() {
@@ -105,12 +120,12 @@ public class TranslateActivity extends AppCompatActivity {
             public void onClick(View view) {
                 translateTV.setVisibility(View.VISIBLE);
                 translateTV.setText("");
-                if (fromLanguageCode == 0){
+                if (fromLanguageCode == null){
                     Toast.makeText(TranslateActivity.this, R.string.translate_source, Toast.LENGTH_SHORT).show();
-                }else if (toLanguageCode == 0){
+                }else if (toLanguageCode == null){
                     Toast.makeText(TranslateActivity.this, R.string.translate_target, Toast.LENGTH_SHORT).show();
                 } else {
-                    translateText(fromLanguageCode, toLanguageCode, sourceText.getText().toString());
+                    prepareModel();
                     mProgressIndicator.setVisibility(View.VISIBLE);
                 }
             }
@@ -124,30 +139,20 @@ public class TranslateActivity extends AppCompatActivity {
         });
 
     }
-    private void translateText(int fromLanguageCode, int toLanguageCode, String source) {
-        translateTV.setText(R.string.translate_downloading);
-        FirebaseTranslatorOptions options = new FirebaseTranslatorOptions.Builder()
+
+   private void prepareModel() {
+       translateTV.setText(R.string.translate_downloading);
+        TranslatorOptions options = new TranslatorOptions.Builder()
                 .setSourceLanguage(fromLanguageCode)
                 .setTargetLanguage(toLanguageCode)
                 .build();
-        FirebaseTranslator translator = FirebaseNaturalLanguage.getInstance().getTranslator(options);
-        FirebaseModelDownloadConditions conditions = new FirebaseModelDownloadConditions.Builder().build();
-        translator.downloadModelIfNeeded(conditions).addOnSuccessListener(new OnSuccessListener<Void>() {
+        translator = Translation.getClient(options);
+
+        translator.downloadModelIfNeeded().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onSuccess(Void aVoid) {
+            public void onSuccess(Void unused) {
                 translateTV.setText(R.string.translation);
-                translator.translate(source).addOnSuccessListener(new OnSuccessListener<String>() {
-                    @Override
-                    public void onSuccess(String s) {
-                        translateTV.setText(s);
-                        mProgressIndicator.setVisibility(View.GONE);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(TranslateActivity.this, R.string.translation_failed, Toast.LENGTH_SHORT).show();
-                    }
-                });
+                translateText();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -155,7 +160,23 @@ public class TranslateActivity extends AppCompatActivity {
                 Toast.makeText(TranslateActivity.this, R.string.translate_failed_downloading, Toast.LENGTH_SHORT).show();
             }
         });
-    }
+   }
+
+   private void translateText() {
+        translator.translate(sourceText.getText().toString()).addOnSuccessListener(new OnSuccessListener<String>() {
+            @Override
+            public void onSuccess(String s) {
+                translateTV.setText(s);
+                mProgressIndicator.setVisibility(View.GONE);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(TranslateActivity.this, R.string.translation_failed, Toast.LENGTH_SHORT).show();
+            }
+        });
+   }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -163,34 +184,33 @@ public class TranslateActivity extends AppCompatActivity {
             ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
         }
     }
-    // String[] fromLanguage = {"From", "English", "Afrikaans", "Arabic", "Belarusian", "Bulgarian", "Bengali", "Catalan", "Czech",
-    //            "Welsh", "Hindi", "Urdu"};
-    private int getLanguageCode(String language) {
-        int languageCode = 0;
+
+    private String getLanguageCode(String language) {
+        String languageCode;
         switch (language){
             case "English":
-                languageCode = FirebaseTranslateLanguage.EN;
+                languageCode = TranslateLanguage.ENGLISH;
                 break;
             case "Arabic":
-                languageCode = FirebaseTranslateLanguage.AR;
+                languageCode = TranslateLanguage.ARABIC;
                 break;
             case "Belarusian":
-                languageCode = FirebaseTranslateLanguage.BE;
+                languageCode = TranslateLanguage.BELARUSIAN;
                 break;
             case "Bulgarian":
-                languageCode = FirebaseTranslateLanguage.BG;
+                languageCode = TranslateLanguage.BULGARIAN;
                 break;
             case "Czech":
-                languageCode = FirebaseTranslateLanguage.CS;
+                languageCode = TranslateLanguage.CZECH;
                 break;
             case "Russian":
-                languageCode = FirebaseTranslateLanguage.RU;
+                languageCode = TranslateLanguage.RUSSIAN;
                 break;
             case "Hindi":
-                languageCode = FirebaseTranslateLanguage.HI;
+                languageCode = TranslateLanguage.HINDI;
                 break;
             default:
-                languageCode = 0;
+                languageCode = "";
         }
         return languageCode;
     }

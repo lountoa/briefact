@@ -1,9 +1,11 @@
 package com.example.briefact.main;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,17 +16,12 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
 import com.example.briefact.splash.ui.SplashActivity;
-import com.example.briefact.utils.Utils;
 import com.google.firebase.auth.FirebaseAuth;
 
 import com.example.briefact.R;
 
 import java.util.Objects;
 
-
-/**
- * Settings for App: I think all codes are self explanatory
- */
 public class SettingsActivity extends AppCompatActivity {
 
     private static final String TAG = "SettingActivity";
@@ -66,6 +63,9 @@ public class SettingsActivity extends AppCompatActivity {
                     FirebaseAuth.getInstance().signOut();
                     Toast.makeText(getActivity(), getString(R.string.loged_out),
                             Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getActivity(), SplashActivity.class);
+                    startActivity(intent);
+                    //triggerRebirth(requireActivity());
                     return false;
                 }
             });
@@ -88,6 +88,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         }
 
-
+        public static void triggerRebirth(Context context) {
+            PackageManager packageManager = context.getPackageManager();
+            Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
+            ComponentName componentName = intent.getComponent();
+            Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+            context.startActivity(mainIntent);
+            Runtime.getRuntime().exit(0);
+        }
     }
 }

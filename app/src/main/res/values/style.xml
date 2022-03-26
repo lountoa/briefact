@@ -8,4 +8,11 @@
     <style name="DialogStyle" parent="android:Theme.Material.Dialog">
         <item name="android:colorPrimary">@color/colorPrimary</item>
     </style>
+
+    <style name="ProgressDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/mainColor5</item>
+        <item name="android:colorButtonNormal">@color/mainColor5</item>
+        <item name="android:textColorPrimary">@color/colorBlack</item>
+        <item name="android:background">@color/colorTransparent</item>
+    </style>
 </resources>

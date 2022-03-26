@@ -30,6 +30,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginStart="36dp"
             android:layout_marginEnd="36dp"
+            android:focusedByDefault="false"
             app:queryHint="@string/search_here"
             android:background="@drawable/background_translate_plate"
             android:textCursorDrawable="@null"
@@ -37,7 +38,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:queryBackground="@null" />
+            app:queryBackground="@null"
+            tools:targetApi="o" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/noteList"
@@ -74,6 +76,55 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_photo"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="10dp"
+            app:cardMaxElevation="10dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/add_text"
+            app:layout_constraintEnd_toEndOf="@+id/add_text"
+            app:layout_constraintStart_toStartOf="@+id/add_text">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/photo"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="20sp"
+                app:drawableLeftCompat="@drawable/ic_baseline_insert_photo_24" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/add_text"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="10dp"
+            app:cardMaxElevation="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/fab_1"
+            app:layout_constraintEnd_toEndOf="@+id/fab_1"
+            app:layout_constraintStart_toStartOf="@+id/fab_1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/colorDarkGrey"
+                android:fontFamily="@font/roboto_bold"
+                app:drawableLeftCompat="@drawable/ic_baseline_format_color_text_24"
+                android:drawablePadding="12dp"/>
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/fab_1"

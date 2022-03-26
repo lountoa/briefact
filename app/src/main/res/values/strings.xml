@@ -34,7 +34,8 @@
     <string name="register_hint3">3. your password</string>
     <string name="register_hint4">4. again please(i might already forget it)</string>
     <string name="register_text1">And the final step before your first own, cool and unique note: come up with a password that will not be hacked(it will be used for app backup)</string>
-    <string name="loged_out">Logout successfully, re-enter application!</string>
+    <string name="loged_out">Logout successfully!</string>
+    <string name="new_note">New note</string>
 
 
     <!-- registration -->
@@ -104,7 +105,7 @@
     <string name="no_results">No text could be recognized.</string>
     <string name="converting_image">Converting Image to text…</string>
     <string name="downloading">Downloading…</string>
-    <string name="downloading_language">Downloading language data…</string>
+    <string name="downloading_language">Downloading language data…  Please, do not leave an app.</string>
     <string name="show_last_result">Show last result</string>
     <string name="text_goes_here">Text goes here</string>
     <string name="copied_to_clipboard">Copied to clipboard</string>
@@ -120,6 +121,8 @@
     <string name="download_description">For proper functioning of Tesseract OCR additional training data needs to be downloaded to your device.\nDo you want to download selected language (%s) data?</string>
     <string name="refresh">Refresh</string>
     <string name="tesseract_data">Tesseract Settings</string>
+    <string name="text">Text</string>
+    <string name="photo">Photo</string>
     <string name="select_tesseract_data_type">Select Tesseract Data type</string>
     <string name="others_settings">Other Settings</string>
     <string name="open_source_statement">Here you can visit my profile on GitHub.</string>

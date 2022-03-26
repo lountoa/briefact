@@ -44,7 +44,8 @@
     <string name="register_hint3">3. your password</string>
     <string name="register_hint4">4. again please(i might already forget it)</string>
     <string name="register_text1"><b>Последний шаг до создания уникальных конспектов!</b>\nПридумайте какой-нибудь классный пароль, чтобы его никто не смог взломать(эти данные понадобятся для восстановления аккаунта) :)</string>
-    <string name="loged_out">Вы вышли из аккаунта, перезайдите в приложение</string>
+    <string name="loged_out">Вы вышли из аккаунта</string>
+    <string name="new_note">Новая заметка</string>
 
     <!-- registration -->
     <string name="emailWarning">Email не был введен</string>
@@ -104,7 +105,7 @@
     <string name="no_results">Текст не распознан или не был найден</string>
     <string name="converting_image">Перевод изображения в текст, секундочку…</string>
     <string name="downloading">Скачивание…</string>
-    <string name="downloading_language">Скачивание языка…</string>
+    <string name="downloading_language">Скачивание языка… Пожалуйста, не выходите из приложения!</string>
     <string name="show_last_result">Последний результат</string>
     <string name="text_goes_here">Текст будет тут</string>
     <string name="copied_to_clipboard">Скопировано</string>
@@ -120,6 +121,8 @@
     <string name="download_description">Для корректной работы приложения необходимо скачать файлы распознавания текста(не волнуйтесь, никаких вирусов)\nВы хотите установить данные языка (%s)?</string>
     <string name="refresh">Перезагрузить</string>
     <string name="tesseract_data">Настройки Tesseract</string>
+    <string name="text">Текст</string>
+    <string name="photo">Фото</string>
     <string name="select_tesseract_data_type">Скорость распознавания</string>
     <string name="others_settings">Другие настройки</string>
     <string name="open_source_statement">Тут вы можете посетить мой профиль на GitHub.</string>

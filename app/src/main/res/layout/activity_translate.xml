@@ -85,7 +85,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="64dp"
             android:background="@drawable/background_translate_plate"
             android:elevation="3dp"
             android:padding="16sp"
