@@ -6,8 +6,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.ColorSpace;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -30,6 +32,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +44,11 @@ import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.Lifecycle;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.briefact.R;
 
 import com.example.briefact.firebaseUtils.firebasemodel;
@@ -52,14 +57,21 @@ import com.example.briefact.note.InfoNoteActivity;
 import com.example.briefact.splash.ui.SplashActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.googlecode.tesseract.android.TessBaseAPI;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -108,6 +120,9 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
     private AlertDialog dialog;
     private LinearProgressIndicator mProgressIndicator;
 
+    LinearLayoutManager mLayoutManager;
+    SharedPreferences mSharedPref;
+
     TextView languageTv;
 
     RecyclerView noteList;
@@ -122,6 +137,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
     TextView emptyRecycler;
     LinearLayout rootFrame;
     ConstraintLayout mainView;
+    ProgressBar progressStart;
 
     Animation show, hide, rotate, rotateBack;
 
@@ -141,6 +157,18 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         setContentView(R.layout.fragment_main);
         Log.d("Сейчас в", "MainActivityJ");
 
+        mSharedPref = getSharedPreferences("SortSettings", MODE_PRIVATE);
+        String mSorting = mSharedPref.getString("Sort", "newest");
+
+        if (mSorting.equals("newest")) {
+            mLayoutManager = new LinearLayoutManager(this);
+            mLayoutManager.setReverseLayout(true);
+            mLayoutManager.setStackFromEnd(true);
+        } else if (mSorting.equals("oldest")) {
+            mLayoutManager = new LinearLayoutManager(this);
+            mLayoutManager.setReverseLayout(false);
+            mLayoutManager.setStackFromEnd(true);
+        }
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -182,7 +210,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
                 noteViewHolder.noteTitle.setText(firebaseModel.getTitle());
 
                 String docId = noteAdapter.getSnapshots().getSnapshot(i).getId();
-
 
                 noteViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -282,7 +309,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
         noteSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
+            public boolean onQueryTextSubmit(String s) {
                 return false;
             }
 
@@ -291,7 +318,7 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
                 Query query;
                 if (s.toString().isEmpty()) {
                     query = firebaseFirestore.collection("notes")
-                            .document(firebaseUser.getUid()).collection("userNotes").orderBy("title",Query.Direction.ASCENDING);
+                            .document(firebaseUser.getUid()).collection("userNotes").orderBy("title").startAt(s).endAt(s + "\uf8ff");
                 } else {
                     query = firebaseFirestore.collection("notes")
                             .document(firebaseUser.getUid()).collection("userNotes")
@@ -308,6 +335,50 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         initializeOCR();
         initIntent();
         initViews();
+    }
+
+    private void searchData(String s) {
+//        firebaseFirestore.collection("notes")
+//                .document(firebaseUser.getUid()).collection("userNotes").orderBy("title")
+//                .whereEqualTo("title", s)
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                            }
+//                        } else {
+//                            Log.d(TAG, "Error getting documents: ", task.getException());
+//                        }
+//                    }
+//                });
+
+    }
+
+    private void showSortDialog() {
+        String[] sortOptions = {"Newest", "Oldest"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.sort))
+                .setIcon(R.drawable.ic_baseline_sort_24)
+                .setItems(sortOptions, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            SharedPreferences.Editor editor = mSharedPref.edit();
+                            editor.putString("Sort", "newest");
+                            editor.apply();
+                            recreate();
+                        } else if (which == 1){
+                            SharedPreferences.Editor editor = mSharedPref.edit();
+                            editor.putString("Sort", "oldest");
+                            editor.apply();
+                            recreate();
+                        }
+                    }
+                });
+        builder.show();
     }
 
     private void checkIfUserIsLoggedIn() {
@@ -631,22 +702,12 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             initializeOCR();
         }
         if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_CODE_SELECT_IMAGE) {
-                final boolean isCamera;
-                if (data == null || data.getData() == null) {
-                    isCamera = true;
-                } else {
-                    final String action = data.getAction();
-                    isCamera = action != null && action.equals(MediaStore.ACTION_IMAGE_CAPTURE);
-                }
-                Uri selectedImageUri;
-                selectedImageUri = data.getData();
-                if (selectedImageUri == null) return;
-                convertImageToText(selectedImageUri);
+            if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                if (isLanguageDataExists(mTrainingDataType, mLanguage)) {
+                    CropImage.ActivityResult result = CropImage.getActivityResult(data);
+                    convertImageToText(result.getUri());
+                } else initializeOCR();
 
-            } else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-                CropImage.ActivityResult result = CropImage.getActivityResult(data);
-                convertImageToText(result.getUri());
             }
         }
     }
@@ -656,7 +717,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
         super.onDestroy();
         if (convertImageToTextTask != null && convertImageToTextTask.getStatus() == AsyncTask.Status.RUNNING) {
             convertImageToTextTask.cancel(true);
-            Log.d(TAG, "onDestroy: image processing canceled");
         }
         if (downloadTrainingTask != null && downloadTrainingTask.getStatus() == AsyncTask.Status.RUNNING) {
             downloadTrainingTask.cancel(true);
@@ -676,7 +736,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
 
     @Override
     public void onProgressValues(final TessBaseAPI.ProgressValues progressValues) {
-        Log.d(TAG, "onProgressValues: percent " + progressValues.getPercent());
         runOnUiThread(() -> mProgressIndicator.setProgress((int) (progressValues.getPercent() * 1.46)));
     }
 
@@ -826,11 +885,10 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
             HttpURLConnection conn;
             try {
                 while (true) {
-                    Log.v(TAG, "downloading " + downloadURL);
                     try {
                         url = new URL(downloadURL);
                     } catch (java.net.MalformedURLException ex) {
-                        Log.e(TAG, "url " + downloadURL + " is bad: " + ex);
+                        crashUtils.logException(ex);
                         return false;
                     }
                     conn = (HttpURLConnection) url.openConnection();
@@ -870,7 +928,6 @@ public class MainActivityJ extends AppCompatActivity implements TessBaseAPI.Prog
                 input.close();
             } catch (Exception e) {
                 result = false;
-                Log.e(TAG, "failed to download " + downloadURL + " : " + e);
                 e.printStackTrace();
                 crashUtils.logException(e);
             }

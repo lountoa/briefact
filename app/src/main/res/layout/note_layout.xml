@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="5dp"
+        android:background="@drawable/background_shadow"
         app:cardCornerRadius="10dp"
         app:cardMaxElevation="10dp">
 

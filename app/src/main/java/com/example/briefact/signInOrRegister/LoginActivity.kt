@@ -20,7 +20,14 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        forgotPassword.setOnClickListener {
+            val intent = Intent(this, ForgotActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         auth = FirebaseAuth.getInstance()
+
         loginSignInButton.setOnClickListener {
             getUserData()
             val inputManager = this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager

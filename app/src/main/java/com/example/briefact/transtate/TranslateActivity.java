@@ -36,7 +36,6 @@ public class TranslateActivity extends AppCompatActivity {
     private TextInputEditText sourceText;
     private Button translateBtn, copyBtn;
     private TextView translateTV;
-    private LinearProgressIndicator mProgressIndicator;
 
     /*
 
@@ -76,8 +75,6 @@ public class TranslateActivity extends AppCompatActivity {
         copyBtn = findViewById(R.id.copy_translate);
 
         translateTV = findViewById(R.id.idTranslatedTV);
-
-        mProgressIndicator = findViewById(R.id.progress_indicator);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -126,7 +123,6 @@ public class TranslateActivity extends AppCompatActivity {
                     Toast.makeText(TranslateActivity.this, R.string.translate_target, Toast.LENGTH_SHORT).show();
                 } else {
                     prepareModel();
-                    mProgressIndicator.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -167,7 +163,6 @@ public class TranslateActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String s) {
                 translateTV.setText(s);
-                mProgressIndicator.setVisibility(View.GONE);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

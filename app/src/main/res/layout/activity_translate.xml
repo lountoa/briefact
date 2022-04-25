@@ -12,31 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progress_indicator"
-            android:layout_width="0dp"
-            android:layout_height="10dp"
-            android:indeterminate="true"
-            android:visibility="gone"
-            android:layout_marginTop="5dp"
-            app:indicatorColor="@color/mainColor5"
-            app:layout_constraintEnd_toEndOf="@+id/idTranslatedTV"
-            app:layout_constraintStart_toStartOf="@+id/idTranslatedTV"
-            app:layout_constraintTop_toBottomOf="@+id/idBtnTranslation"
-            tools:visibility="gone" />
-
         <Button
             android:id="@+id/copy_translate"
             android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/background_on_button_click"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/background_shadow"
             android:fontFamily="@font/open_sans"
             android:text="@string/copy_to_clipboard"
             android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="@+id/idBtnTranslation"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/idBtnTranslation"
             app:layout_constraintTop_toBottomOf="@+id/idTranslatedTV" />
 
         <LinearLayout
@@ -56,6 +44,7 @@
                 android:id="@+id/idFromSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_spinner"
                 android:layout_gravity="center"
                 android:layout_margin="3dp"
                 android:layout_weight="1"
@@ -72,6 +61,7 @@
                 android:id="@+id/idToSpinner"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/background_spinner_extra"
                 android:layout_gravity="center"
                 android:layout_margin="3dp"
                 android:layout_marginEnd="16dp"
@@ -85,10 +75,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/background_translate_plate"
             android:elevation="3dp"
-            android:padding="16sp"
+            android:padding="24sp"
             android:textColor="@color/colorBlack"
             android:text="@string/translate_here"
             android:textIsSelectable="false"
@@ -96,23 +86,21 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
             app:layout_constraintStart_toStartOf="@+id/textInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/idBtnTranslation" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
         <Button
             android:id="@+id/idBtnTranslation"
-            android:layout_width="wrap_content"
+            android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_margin="20dp"
-            android:background="@drawable/background_on_button_click"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/background_shadow"
             android:fontFamily="@font/open_sans"
-            android:gravity="center"
             android:text="@string/translate"
             android:textAllCaps="false"
-            android:textSize="19sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+            app:layout_constraintStart_toStartOf="@+id/idTranslatedTV"
+            app:layout_constraintTop_toBottomOf="@+id/idTranslatedTV" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"

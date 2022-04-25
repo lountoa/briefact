@@ -37,6 +37,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
@@ -51,8 +52,8 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
     TextView resultantTitle;
     ImageButton btnCopy;
     ImageButton btnShare;
-    Button btnSave;
-    Button btnTranslate;
+    CardView btnSave;
+    CardView btnTranslate;
     CardView prgSheet;
 
 
@@ -99,6 +100,7 @@ public class BottomSheetResultsFragment extends BottomSheetDialogFragment {
                     Map<String, Object> note = new HashMap<>();
                     note.put("title", title);
                     note.put("content", content);
+                    note.put("search", title.toLowerCase());
 
                     documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

@@ -13,7 +13,7 @@
         android:layout_marginTop="64dp"
         android:fontFamily="@font/montserrat_medium"
         android:textColor="@color/white"
-        android:text="@string/login_text1"
+        android:text="@string/message1"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:fontFamily="@font/roboto_light"
         android:layout_marginTop="16dp"
         android:paddingHorizontal="32dp"
-        android:text="@string/login_text11"
+        android:text="@string/message2"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12sp"
             android:fontFamily="@font/montserrat_medium"
-            android:text="@string/login_text2"
+            android:text="Email"
             android:textColor="@color/textColor"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -66,69 +66,34 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/loginSignInButton"
+            android:id="@+id/recoveryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="32dp"
             android:background="@drawable/background_on_button_click"
             android:fontFamily="@font/montserrat_medium"
             android:padding="16sp"
-            android:text="@string/sign_in"
+            android:layout_marginTop="36dp"
+            android:text="@string/send"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="22sp"
-
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintEnd_toEndOf="@+id/loginEmail1"
+            app:layout_constraintStart_toStartOf="@+id/loginEmail1"
+            app:layout_constraintTop_toBottomOf="@+id/loginEmail1" />
 
         <TextView
-            android:id="@+id/forgotPassword"
+            android:id="@+id/goBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/forgot_pass"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="28dp"
-            android:textColor="@color/mainColor5"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/go_back"
+            android:textColor="@color/mainColor5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/loginSignInButton"
-            app:layout_constraintStart_toStartOf="@+id/loginSignInButton"
-            app:layout_constraintTop_toBottomOf="@+id/loginSignInButton" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayout2"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="12sp"
-            app:hintTextColor="@color/mainColor5"
-            app:layout_constraintTop_toBottomOf="@+id/loginEmail1"
-            app:passwordToggleContentDescription="password"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/loginPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:drawableStart="@drawable/ic_baseline_password_24"
-                android:drawablePadding="12dp"
-                android:background="#0000"
-                android:imeOptions="actionDone"
-                android:singleLine="true"
-                android:textSize="16sp"
-                android:fontFamily="@font/montserrat_medium"
-                android:hint="@string/login_password"
-                android:padding="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/title2"
-                app:layout_constraintStart_toStartOf="@+id/title2"
-                app:layout_constraintTop_toBottomOf="@+id/title2" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintEnd_toEndOf="@+id/recoveryButton"
+            app:layout_constraintStart_toStartOf="@+id/recoveryButton"
+            app:layout_constraintTop_toBottomOf="@+id/recoveryButton" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/loginEmail1"
@@ -141,7 +106,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView4">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/loginEmail"
+                android:id="@+id/recoveryEmail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:drawableStart="@drawable/ic_baseline_mail_24"

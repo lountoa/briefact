@@ -19,6 +19,7 @@
     <string name="edit">Изменить</string>
     <string name="delete">Удалить</string>
     <string name="save">Сохранить</string>
+    <string name="sort">Сортировать по</string>
     <string name="deleted_successfully">Успешно удалено!</string>
     <string name="not_deleted">Что-то пошло не так, проверьте подключение к интернету.</string>
     <string name="note_updated">Информация обновлена!</string>
@@ -75,7 +76,7 @@
     <string name="key_persist_data" translatable="false">persist_data</string>
     <string name="key_language_for_tesseract_multi" translatable="false">multi_languages</string>
     <string name="key_ocr_psm_mode">key_ocr_psm_mode</string>
-    <string name="fbs" translatable="false" >Только "Лучшее"(на данный момент). Для лучшего распознования используйте сканы или хорошо освещенные снимки.</string>
+    <string name="fbs" translatable="false" >Для лучшего распознования используйте сканы или хорошо освещенные снимки.</string>
     <string name="account_label" translatable="true" >Аккаунт</string>
     <string name="account_email_title" translatable="true" >Используемый аккаунт:</string>
     <string name="account_email_content" translatable="true" >%1$d</string>
@@ -172,4 +173,16 @@
     <string name="translation_failed">Не удалось сделать перевод! Попробуйте еще раз…</string>
     <string name="translate_failed_downloading">Загрузка не удалась! Проверьте подключение к интернету.</string>
 
+    <!--forgot activity-->
+    <string name="message1">Очень жаль</string>
+    <string name="message2">Пожалуйста введите в поле зарегистрированный email, чтобы получить дальнейшие инструкции по восстановке пароля!</string>
+    <string name="send">Отправить письмо</string>
+    <string name="go_back">Вернуться</string>
+    <string name="forgot_pass">Забыли пароль?</string>
+    <string name="wait">Пожалуйста подождите</string>
+    <string name="enter_email">Введите email…</string>
+    <string name="wrong_email">Кого пытаетесь обмануть?) Введите корректный email</string>
+    <string name="sending">Отправляю письмо с инструкцией на почту</string>
+    <string name="sent">Отправлено! Возвращайтесь поскорее!</string>
+    <string name="not_sent">Произошла ошибка, проверьте подключение к интернету</string>
 </resources>

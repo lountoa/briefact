@@ -56,6 +56,7 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="save">Save</string>
+    <string name="sort">Sort by</string>
     <string name="language_tv">Language: %s</string>
     <string name="deleted_successfully">Deleted successfully!</string>
     <string name="not_deleted">Something went wrong. Note is not deleted</string>
@@ -75,7 +76,7 @@
     <string name="key_persist_data" translatable="false">persist_data</string>
     <string name="key_language_for_tesseract_multi" translatable="false">multi_languages</string>
     <string name="key_ocr_psm_mode">key_ocr_psm_mode</string>
-    <string name="fbs" translatable="false">Only Best(As for now)</string>
+    <string name="fbs" translatable="false">Best or Fast</string>
     <string name="account_label" translatable="true">Account info</string>
     <string name="account_email_title" translatable="true">Using account:</string>
     <string name="account_email_content" translatable="true">%1$d</string>
@@ -171,4 +172,17 @@
     <string name="translation">Translation…</string>
     <string name="translation_failed">Failed to translate! Try again…</string>
     <string name="translate_failed_downloading">Failed to download model! Check your internet connection.</string>
+
+    <!--forgot activity-->
+    <string name="message1">Whats a pitty!</string>
+    <string name="message2">Please enter your registered email to receive instructions for reseting passowrd!</string>
+    <string name="send">Send</string>
+    <string name="go_back">Go back</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="wait">Please wait</string>
+    <string name="enter_email">Enter email…</string>
+    <string name="wrong_email">Thats not an email, please enter the right one</string>
+    <string name="sending">Sending a message with instructions to</string>
+    <string name="sent">Sent, please check your mail</string>
+    <string name="not_sent">Some error found, check your internet connection</string>
 </resources>

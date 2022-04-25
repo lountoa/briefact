@@ -57,29 +57,53 @@
         android:background="@color/elevatedSurface"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.cardview.widget.CardView
             android:id="@+id/resultant_translate"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="60dp"
-            android:background="@drawable/background_buttons_small"
-            android:fontFamily="@font/open_sans"
-            android:padding="10dp"
-            android:text="@string/translate"
-            android:textAllCaps="false" />
+            android:layout_marginEnd="16dp"
+            android:background="@color/mainColor5"
+            app:cardCornerRadius="24dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:text="@string/translate"
+                android:textAllCaps="false"/>
 
-        <Button
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:id="@+id/resultant_save"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/background_buttons_small"
-            android:fontFamily="@font/open_sans"
-            android:text="@string/add"
-            android:textAllCaps="false" />
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="24sp"
+            app:cardBackgroundColor="@color/mainColor4"
+            app:cardCornerRadius="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:text="@string/save"
+                android:textAllCaps="false"/>
+
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     <EditText

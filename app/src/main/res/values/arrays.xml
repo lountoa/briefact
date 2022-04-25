@@ -1,22 +1,154 @@
 <resources>
-    <!--language array-->
     <string-array name="ocr_engine_language">
+        <item>Arabic</item>
+        <item>Azerbaijani</item>
+        <item>Belarusian</item>
+        <item>Bulgarian</item>
+        <item>Czech</item>
+        <item>Chinese-Simplified</item>
+        <item>Chinese-Simplified-Vertical</item>
+        <item>Chinese-Traditional</item>
+        <item>Chinese-Traditional-Vertical</item>
+        <item>Welsh</item>
+        <item>Danish</item>
+        <item>German</item>
         <item>English</item>
+        <item>English,Modern(1453-)</item>
+        <item>Estonian</item>
+        <item>Persian</item>
+        <item>Filipino:Pilipino</item>
+        <item>Finnish</item>
+        <item>French</item>
+        <item>Frankish</item>
+        <item>French,Middle(ca.1400–1600)</item>
+        <item>Westtern Frisian</item>
+        <item>Scottish Gaelic; Gaelic</item>
+        <item>Irish</item>
+        <item>Greek,Ancient(-1453)</item>
+        <item>Gujarati</item>
+        <item>Hindi</item>
+        <item>Croatian</item>
+        <item>Hungarian</item>
+        <item>Armenian</item>
+        <item>Indonesian</item>
+        <item>Icelandic</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Japanese (vertical)</item>
+        <item>Kannada</item>
+        <item>Georgian</item>
+        <item>Kazakh</item>
+        <item>Korean</item>
+        <item>Korean (vertical)</item>
+        <item>Latin</item>
+        <item>Latvian</item>
+        <item>Lithuanian</item>
+        <item>Macedonian</item>
+        <item>Mongolian</item>
+        <item>Nepali</item>
+        <item>Norwegian</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
         <item>Russian</item>
+        <item>Slovak</item>
+        <item>Slovenian</item>
+        <item>Sindhi</item>
+        <item>Spanish; Castilian-Old</item>
+        <item>Albanian</item>
+        <item>Serbian</item>
+        <item>Serbian-Latin</item>
+        <item>Swedish</item>
+        <item>Tatar</item>
+        <item>Telugu</item>
+        <item>Thai</item>
+        <item>Turkish</item>
+        <item>Ukrainian</item>
+        <item>Uzbek</item>
+        <item>Uzbek-Cyrillic</item>
+        <item>Vietnamese</item>
+        <item>Yiddish</item>
     </string-array>
 
-    <!--language keys mapped to tessertact training data -->
     <string-array name="key_ocr_engine_language_value">
+        <item>ara</item>
+        <item>aze</item>
+        <item>bel</item>
+        <item>bul</item>
+        <item>ces</item>
+        <item>chi_sim</item>
+        <item>chi_sim_vert</item>
+        <item>chi_tra</item>
+        <item>chi_tra_vert</item>
+        <item>cym</item>
+        <item>dan</item>
+        <item>deu</item>
         <item>eng</item>
+        <item>enm</item>
+        <item>est</item>
+        <item>fas</item>
+        <item>fil</item>
+        <item>fin</item>
+        <item>fra</item>
+        <item>frk</item>
+        <item>frm</item>
+        <item>fry</item>
+        <item>gla</item>
+        <item>gle</item>
+        <item>grc</item>
+        <item>guj</item>
+        <item>hin</item>
+        <item>hrv</item>
+        <item>hun</item>
+        <item>hye</item>
+        <item>ind</item>
+        <item>isl</item>
+        <item>ita</item>
+        <item>jpn</item>
+        <item>jpn_vert</item>
+        <item>kan</item>
+        <item>kat</item>
+        <item>kaz</item>
+        <item>kor</item>
+        <item>kor_vert</item>
+        <item>lat</item>
+        <item>lav</item>
+        <item>lit</item>
+        <item>mkd</item>
+        <item>mon</item>
+        <item>nep</item>
+        <item>nor</item>
+        <item>pol</item>
+        <item>por</item>
         <item>rus</item>
+        <item>slk</item>
+        <item>slv</item>
+        <item>snd</item>
+        <item>spa_old</item>
+        <item>sqi</item>
+        <item>srp</item>
+        <item>srp_latn</item>
+        <item>swe</item>
+        <item>tat</item>
+        <item>tel</item>
+        <item>tha</item>
+        <item>tur</item>
+        <item>ukr</item>
+        <item>uzb</item>
+        <item>uzb_cyrl</item>
+        <item>vie</item>
+        <item>yid</item>
     </string-array>
 
     <string-array name="ocr_training_data_entries">
+        <item>Fast</item>
         <item>Best</item>
+        <item>Standard</item>
     </string-array>
 
     <string-array name="key_ocr_training_data_entries_values">
+        <item>fast</item>
         <item>best</item>
+        <item>standard</item>
     </string-array>
 
     <string-array name="key_ocr_psm_mode">
